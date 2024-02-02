@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./components/errorPage";
 import App from "./App";
 import Signup from "./components/signup";
 
@@ -7,10 +8,12 @@ function Router() {
     {
       path: "/",
       element: <App />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "/",
       element: <Signup />,
+      errorElement: <ErrorPage />,
     },
   ]);
 
