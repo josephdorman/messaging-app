@@ -11,7 +11,7 @@ function Router() {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/",
+      path: "/signup",
       element: <Signup />,
       errorElement: <ErrorPage />,
     },
