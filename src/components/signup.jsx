@@ -1,4 +1,5 @@
 import "../styles/signup.css";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import google from "../assets/google.svg";
 import facebook from "../assets/facebook.svg";
@@ -45,7 +46,7 @@ function Signup() {
               </button>
             </div>
             <p id="reg">
-              Already have an account? <a href="/login">Log in</a>
+              Already have an account? <Link to="/login">Log in</Link>
             </p>
           </div>
           <div id="tos">
