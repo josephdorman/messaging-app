@@ -50,7 +50,7 @@ function Signup() {
             </p>
           </div>
           <div id="tos">
-            <p>By creating an account you account our</p>
+            <p>By creating an account you accept our</p>
             <a href="/tos">Terms of service</a>
           </div>
         </div>
