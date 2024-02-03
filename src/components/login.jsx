@@ -41,7 +41,7 @@ function Login() {
             </div>
             <div className="signup-option-wrapper"></div>
             <p id="reg">
-              Dont have an account? <Link to="/Signup">Sign up</Link>
+              Dont have an account? <Link to="/signup">Sign up</Link>
             </p>
           </div>
           <div id="tos">
