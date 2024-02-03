@@ -1,5 +1,7 @@
 import "../styles/signup.css";
 import logo from "../assets/logo.svg";
+import google from "../assets/google.svg";
+import facebook from "../assets/facebook.svg";
 
 function Signup() {
   return (
@@ -33,8 +35,14 @@ function Signup() {
             </form>
             <p>Or sign in with</p>
             <div className="signup-option-wrapper">
-              <button className="signup-option btn">FACEBOOK</button>
-              <button className="signup-option btn">GOOGLE</button>
+              <button className="signup-option btn">
+                <img src={facebook} alt="" className="icon-sm" />
+                FACEBOOK
+              </button>
+              <button className="signup-option btn">
+                <img src={google} alt="" className="icon-sm" />
+                GOOGLE
+              </button>
             </div>
             <p id="reg">
               Already have an account? <a href="/login">Log in</a>
