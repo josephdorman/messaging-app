@@ -20,7 +20,11 @@ a {
 }
 
 .logo-xl {
-  width: 400px;
+  width: 100%;
+}
+
+.icon-sm {
+  width: 20px;
 }
 
 .input-wrapper {
@@ -43,6 +47,9 @@ a {
 }
 
 .btn {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
   font-size: 16px;
   background-color: var(--grey);
   border: none;
@@ -55,7 +62,29 @@ a {
   border-radius: 6px;
 }
 
+.btn:hover {
+  background-color: var(--black);
+}
+
 .form {
   display: grid;
   gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    flex-direction: column;
+  }
+
+  .logo-xl {
+    width: 50px;
+  }
+
+  .left {
+    flex: 0;
+    align-self: center;
+    width: 150px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 }
