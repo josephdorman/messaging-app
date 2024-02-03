@@ -1,7 +1,6 @@
 .panel {
   display: flex;
   background-color: var(--dark-grey);
-  color: white;
   text-align: center;
   height: 100vh;
 }
