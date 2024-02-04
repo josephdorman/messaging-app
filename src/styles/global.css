@@ -24,6 +24,24 @@ a {
   width: 100%;
 }
 
+.logo-sm {
+  width: 30px;
+}
+
+.line {
+  position: relative;
+}
+
+.line::after {
+  background-color: white;
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 2px;
+  bottom: -20px;
+  left: -3px;
+}
+
 .icon-sm {
   width: 20px;
 }
