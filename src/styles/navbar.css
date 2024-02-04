@@ -1,0 +1,74 @@
+.navbar {
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+}
+
+nav {
+  display: grid;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.nav-btn {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  transition: background-image 0.2s;
+}
+
+.nav-btn a {
+  height: 100%;
+  width: 100%;
+}
+
+#home {
+  background-image: url(../assets/homeLinear.svg);
+}
+
+#home:hover,
+#home:focus {
+  background-image: url(../assets/homeBold.svg);
+}
+
+#notifs {
+  background-image: url(../assets/notifLinear.svg);
+}
+
+#notifs:hover,
+#notifs:focus {
+  background-image: url(../assets/notifBold.svg);
+}
+
+#friends {
+  background-image: url(../assets/friendsLinear.svg);
+}
+
+#friends:hover,
+#friends:focus {
+  background-image: url(../assets/friendsBold.svg);
+}
+
+#messages {
+  background-image: url(../assets/chatLinear.svg);
+}
+
+#messages:hover,
+#messages:focus {
+  background-image: url(../assets/chatBold.svg);
+}
+
+#logout {
+  background-image: url(../assets/logoutLinear.svg);
+}
+
+#logout:hover,
+#logout:focus {
+  background-image: url(../assets/logoutBold.svg);
+}
