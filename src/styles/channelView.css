@@ -1,6 +1,8 @@
 .ch-view {
   display: grid;
-  grid-template-rows: var(--gr-first) 1fr var(--gr-last);
+  grid-template-rows:
+    var(--gr-first) calc(100vh - var(--gr-first) - var(--gr-last))
+    var(--gr-last);
 }
 
 .ch-header,
@@ -10,9 +12,18 @@
 }
 
 .ch-chat {
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
   padding: 0 20px 20px 20px;
+  overflow-y: scroll;
+  overflow: auto;
+  gap: 20px;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.ch-chat::-webkit-scrollbar {
+  display: none;
 }
 
 .ch-actions {
