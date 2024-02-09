@@ -99,6 +99,18 @@ a {
   font-size: var(--fs-14);
 }
 
+.ch-chat,
+.list {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.ch-chat::-webkit-scrollbar,
+.list::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .panel {
     flex-direction: column;

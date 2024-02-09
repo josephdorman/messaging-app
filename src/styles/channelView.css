@@ -14,16 +14,7 @@
 .ch-chat {
   display: grid;
   padding: 0 20px 20px 20px;
-  overflow-y: scroll;
-  overflow: auto;
   gap: 20px;
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.ch-chat::-webkit-scrollbar {
-  display: none;
 }
 
 .ch-actions {
