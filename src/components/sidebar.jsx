@@ -9,7 +9,7 @@ function Sidebar() {
         <h2>Messages</h2>
         <p>People, Group, Messages</p>
       </div>
-      <div>
+      <div className="ch-list-wrapper">
         <div className="search">
           <button id="search" className="nav-btn"></button>
           <input
