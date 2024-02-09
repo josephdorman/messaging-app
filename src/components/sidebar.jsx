@@ -1,6 +1,5 @@
 import "../styles/sidebar.css";
 import profile from "../assets/profileIcon.svg";
-import chat from "../assets/chatLinear.svg";
 
 function Sidebar() {
   function fillChat() {
