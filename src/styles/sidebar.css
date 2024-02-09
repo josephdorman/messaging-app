@@ -1,6 +1,6 @@
 .sidebar {
   display: grid;
-  grid-template-rows: 120px 4fr 1fr;
+  grid-template-rows: var(--grs) 4fr var(--grs);
   padding-inline: 20px;
 
   background-color: var(--dark-grey);
