@@ -12,7 +12,8 @@
 }
 
 .ch-chat {
-  display: grid;
+  display: flex;
+  flex-direction: column-reverse;
   padding: 0 20px 20px 20px;
   gap: 20px;
 }
