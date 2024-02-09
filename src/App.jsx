@@ -1,9 +1,14 @@
 import "./styles/app.css";
+import Navbar from "./components/navbar";
+import Sidebar from "./components/sidebar";
+import ChannelView from "./components/channelView";
 
 function App() {
   return (
     <div className="app">
-      <h1>App</h1>
+      <Navbar />
+      <Sidebar />
+      <ChannelView />
     </div>
   );
 }
