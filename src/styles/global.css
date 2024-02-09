@@ -17,6 +17,39 @@ html {
   color: white;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  margin-block: 0.5em;
+  border-radius: 100vh;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background: var(--black);
+}
+
+.ch-chat,
+.list {
+  overflow-y: scroll;
+}
+
+.ch-chat::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ch-chat::-webkit-scrollbar-track {
+  margin-block: 0.5em;
+  border-radius: 100vh;
+}
+
+.ch-chat::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background: var(--black);
+}
+
 a {
   color: #589bff;
 }
@@ -97,18 +130,6 @@ a {
 
 .category p {
   font-size: var(--fs-14);
-}
-
-.ch-chat,
-.list {
-  overflow-y: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.ch-chat::-webkit-scrollbar,
-.list::-webkit-scrollbar {
-  display: none;
 }
 
 @media (max-width: 640px) {
