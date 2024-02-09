@@ -37,6 +37,10 @@ a {
   width: 40px;
 }
 
+.icon-lg {
+  width: 80px;
+}
+
 .input-wrapper {
   display: grid;
   text-align: left;
