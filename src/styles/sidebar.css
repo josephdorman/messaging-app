@@ -1,14 +1,17 @@
 .sidebar {
+  --col-grid: 20px;
   display: grid;
-  grid-template-rows: var(--gr-first) 4fr var(--gr-last);
+  grid-template-rows:
+    var(--gr-first) 61px calc(100vh - var(--gr-first) - var(--gr-last) - 61px)
+    var(--gr-last);
 
   background-color: var(--dark-grey);
 }
 
 .category,
-.ch-list-wrapper,
+.list,
 .ch.user {
-  padding-inline: 20px;
+  padding-inline: var(--col-grid);
 }
 
 .category {
@@ -19,14 +22,16 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-inline: var(--col-grid);
   padding-block: 12px;
-  margin-bottom: 20px;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 }
 
 .list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  padding-block: 15px;
   gap: 10px;
 }
 
