@@ -19,7 +19,7 @@ function ChannelView() {
           <div className="msg">
             <div className="msg-user">
               <h4>Katie Lundon</h4>
-              <p>10:22</p>
+              <p>10:22 PM</p>
             </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
