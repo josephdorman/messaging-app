@@ -1,9 +1,14 @@
 .sidebar {
   display: grid;
   grid-template-rows: var(--grs) 4fr var(--grs);
-  padding-inline: 20px;
 
   background-color: var(--dark-grey);
+}
+
+.category,
+.ch-list-wrapper,
+.ch.user {
+  padding-inline: 20px;
 }
 
 .category {
@@ -49,6 +54,10 @@
 .ch-info {
   font-size: var(--fs-14);
   text-align: right;
+}
+
+.ch.user {
+  background-color: var(--black);
 }
 
 #search {
