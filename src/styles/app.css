@@ -1,0 +1,6 @@
+.app {
+  display: grid;
+  grid-template-columns: 80px 350px 1fr;
+  background-color: var(--grey);
+  height: 100vh;
+}

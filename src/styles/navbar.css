@@ -1,6 +1,6 @@
 .navbar {
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 120px 4fr 1fr;
   justify-content: center;
   align-items: center;
   background-color: var(--black);
@@ -8,8 +8,9 @@
 
 nav {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   align-self: flex-start;
+  justify-content: center;
 }
 
 .nav-btn {
@@ -26,6 +27,12 @@ nav {
 .nav-btn a {
   height: 100%;
   width: 100%;
+}
+
+.line {
+  content: "";
+  background-color: white;
+  height: 2px;
 }
 
 #home {
@@ -65,6 +72,7 @@ nav {
 }
 
 #logout {
+  justify-self: center;
   background-image: url(../assets/logoutLinear.svg);
 }
 
