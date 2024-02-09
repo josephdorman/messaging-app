@@ -1,5 +1,6 @@
 .app {
-  --grs: 120px;
+  --gr-first: 120px;
+  --gr-last: 100px;
 
   display: grid;
   grid-template-columns: 80px 350px 1fr;

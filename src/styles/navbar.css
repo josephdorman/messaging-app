@@ -1,6 +1,6 @@
 .navbar {
   display: grid;
-  grid-template-rows: var(--grs) 4fr var(--grs);
+  grid-template-rows: var(--gr-first) 4fr var(--gr-last);
   justify-content: center;
   align-items: center;
   background-color: var(--black);

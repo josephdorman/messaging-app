@@ -1,6 +1,6 @@
 .sidebar {
   display: grid;
-  grid-template-rows: var(--grs) 4fr var(--grs);
+  grid-template-rows: var(--gr-first) 4fr var(--gr-last);
 
   background-color: var(--dark-grey);
 }
