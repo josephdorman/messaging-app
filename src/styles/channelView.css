@@ -29,7 +29,11 @@
 .msg-wrapper {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 10px;
+  gap: 15px;
+}
+
+.msg-wrapper img {
+  margin-top: 5px;
 }
 
 .msg-user {
