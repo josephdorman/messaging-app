@@ -1,0 +1,61 @@
+.ch-view {
+  display: grid;
+  grid-template-rows: var(--gr-first) 1fr var(--gr-last);
+}
+
+.ch-header,
+.ch-actions {
+  padding-inline: 50px;
+  background-color: var(--dark-grey);
+}
+
+.ch-chat {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0 20px 20px 20px;
+}
+
+.ch-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.ch-actions .search-bar {
+  padding-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+
+.msg-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+}
+
+.msg-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.msg-user p {
+  font-size: var(--fs-14);
+}
+
+#emoji {
+  background-image: url(../assets/emojiLinear.svg);
+}
+
+#emoji:hover,
+#emoji:focus {
+  background-image: url(../assets/emojiBold.svg);
+}
+
+#attach {
+  background-image: url(../assets/attachLinear.svg);
+}
+
+#attach:hover,
+#attach:focus {
+  background-image: url(../assets/attachBold.svg);
+}
