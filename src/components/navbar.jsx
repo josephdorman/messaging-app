@@ -5,10 +5,11 @@ import logo from "../assets/logo.svg";
 function Navbar() {
   return (
     <div className="navbar">
-      <div className="line">
+      <div className="logo-wrapper">
         <img className="logo-sm" src={logo} alt="" />
       </div>
       <nav>
+        <div className="line"></div>
         <button id="home" className="nav-btn">
           <Link to="/home"></Link>
         </button>
