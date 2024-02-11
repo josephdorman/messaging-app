@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import google from "../assets/google.svg";
 import facebook from "../assets/facebook.svg";
+import { createUser } from "../providers/api";
 
 function Signup() {
   return (
@@ -30,7 +31,12 @@ function Signup() {
                 <label htmlFor="email">Email</label>
                 <input type="email" id="email" name="email" />
               </div>
-              <button id="register" className="btn" type="submit">
+              <button
+                onClick={(e) => createUser(e)}
+                id="register"
+                className="btn"
+                type="submit"
+              >
                 Create Account
               </button>
             </form>
