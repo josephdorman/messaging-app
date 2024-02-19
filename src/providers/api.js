@@ -32,4 +32,26 @@ async function loginUser(e) {
     });
 }
 
-export { createUser, loginUser };
+async function getSession() {
+  let user = false;
+
+  axios.defaults.withCredentials = true;
+
+  await axios
+    .post("http://localhost:3000/api/v1/user/session")
+    .then(function (response) {
+      if (response.data === false) {
+        user = false;
+      } else {
+        user = response.data;
+      }
+    })
+    .catch(function (error) {
+      user = false;
+      console.log(error);
+    });
+
+  return user;
+}
+
+export { createUser, loginUser, getSession };
