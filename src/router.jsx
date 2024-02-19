@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/errorPage";
 import App from "./App";
@@ -5,10 +6,12 @@ import Signup from "./components/signup";
 import Login from "./components/login";
 
 function Router() {
+  const [user, setUser] = useState(null);
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App />,
+      element: <App user={user} />,
       errorElement: <ErrorPage />,
     },
     {
@@ -18,7 +21,7 @@ function Router() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: <Login user={user} setUser={setUser} />,
       errorElement: <ErrorPage />,
     },
   ]);
