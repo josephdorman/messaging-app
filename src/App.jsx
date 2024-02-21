@@ -11,7 +11,7 @@ function App({ user, setUser }) {
     getSession().then((res) => {
       setUser(res);
     });
-  });
+  }, []);
 
   return (
     <>
