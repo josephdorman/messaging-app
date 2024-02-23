@@ -4,25 +4,39 @@ import Sidebar from "./components/sidebar";
 import ChannelView from "./components/channelView";
 import { Navigate } from "react-router-dom";
 import { getSession } from "./providers/api";
-import { useEffect } from "react";
+import UserContext from "./providers/userContext";
+import { useEffect, useState } from "react";
 
 function App({ user, setUser }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     getSession().then((res) => {
       setUser(res);
+
+      if (res !== false) {
+        setIsLoading(false);
+      } else {
+        setIsError(true);
+      }
     });
   }, []);
 
   return (
     <>
-      {user ? (
-        <div className="app">
-          <Navbar />
-          <Sidebar />
-          <ChannelView />
-        </div>
-      ) : (
+      {isError ? (
         <Navigate to="/login" replace={true} />
+      ) : isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="app">
+          <UserContext.Provider value={{ user, setUser }}>
+            <Navbar />
+            <Sidebar />
+            <ChannelView />
+          </UserContext.Provider>
+        </div>
       )}
     </>
   );
