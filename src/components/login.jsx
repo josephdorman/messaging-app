@@ -14,10 +14,8 @@ function Login({ user, setUser }) {
   }, []);
 
   async function userLogin(e) {
-    loginUser(e).then(function () {
-      getSession().then((res) => {
-        setUser(res);
-      });
+    loginUser(e).then((res) => {
+      setUser(res);
     });
   }
 
