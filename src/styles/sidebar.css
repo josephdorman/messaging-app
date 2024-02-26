@@ -1,11 +1,26 @@
 .sidebar {
   --col-grid: 20px;
   display: grid;
+
+  background-color: var(--dark-grey);
+}
+
+.grid-4 {
   grid-template-rows:
     var(--gr-first) 76px calc(100vh - var(--gr-first) - var(--gr-last) - 76px)
     var(--gr-last);
+}
 
-  background-color: var(--dark-grey);
+.grid-3 {
+  grid-template-rows:
+    var(--gr-first) 1fr
+    var(--gr-last);
+}
+
+.grid-3 .list::before {
+  content: "";
+  border-top: 2px solid white;
+  margin-bottom: 15px;
 }
 
 .category,
@@ -31,6 +46,8 @@
 .list {
   display: flex;
   flex-direction: column;
+  padding-left: var(--col-grid);
+  padding-right: calc(var(--col-grid) - 5px);
 }
 
 .ch-wrapper {
@@ -39,7 +56,8 @@
   border: none;
   grid-template-columns: auto 1fr auto;
   text-align: start;
-  padding: 10px var(--col-grid);
+  padding: 7px 12px;
+  border-radius: 10px;
   gap: 15px;
 }
 
