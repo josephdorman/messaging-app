@@ -4,6 +4,7 @@ import ErrorPage from "./components/errorPage";
 import App from "./App";
 import Signup from "./components/signup";
 import Login from "./components/login";
+import Settings from "./pages/Settings/index";
 import Messages from "./pages/Messages/index";
 import Friends from "./pages/Friends/index";
 
@@ -15,6 +16,11 @@ function Router() {
       path: "/",
       element: <App user={user} setUser={setUser} />,
       children: [
+        {
+          path: "settings",
+          element: <Settings />,
+          errorElement: <ErrorPage />,
+        },
         {
           path: "messages",
           element: <Messages />,
