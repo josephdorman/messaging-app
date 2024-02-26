@@ -56,4 +56,15 @@ async function getSession() {
   return user;
 }
 
-export { createUser, loginUser, getSession };
+async function getFriends() {
+  await api
+    .get("/user/friends")
+    .then(function (res) {
+      console.log(res, "friends");
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
+export { createUser, loginUser, getSession, getFriends };
