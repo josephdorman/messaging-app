@@ -1,5 +1,10 @@
 import axios from "axios";
 
+const api = axios.create({
+  baseURL: "http://localhost:3000/api/v1",
+  withCredentials: true,
+});
+
 function createUser(e) {
   e.preventDefault();
   axios
@@ -18,9 +23,8 @@ function createUser(e) {
 
 async function loginUser(e) {
   e.preventDefault();
-  axios.defaults.withCredentials = true;
-  return axios
-    .post("http://localhost:3000/api/v1/user/login", {
+  return api
+    .post("/user/login", {
       username: e.target.form.name.value,
       password: e.target.form.password.value,
     })
@@ -35,10 +39,8 @@ async function loginUser(e) {
 async function getSession() {
   let user = false;
 
-  axios.defaults.withCredentials = true;
-
-  await axios
-    .post("http://localhost:3000/api/v1/user/session")
+  await api
+    .post("/user/session")
     .then(function (response) {
       if (response.data === false) {
         user = false;
