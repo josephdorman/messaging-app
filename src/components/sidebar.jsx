@@ -7,9 +7,17 @@ import { useContext } from "react";
 function Sidebar(props) {
   const { user, setUser } = useContext(UserContext);
 
+  function setSearchbar(props) {
+    if (props.searchbar) {
+      return "grid-4";
+    }
+
+    return "grid-3";
+  }
+
   return (
     <>
-      <div className="sidebar">
+      <div className={`sidebar ${setSearchbar(props)}`}>
         {props.body}
         <div className="ch user">
           <img className="icon-md" src={profile} alt="" />
