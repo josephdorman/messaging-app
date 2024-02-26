@@ -4,6 +4,8 @@ import ErrorPage from "./components/errorPage";
 import App from "./App";
 import Signup from "./components/signup";
 import Login from "./components/login";
+import Messages from "./pages/Messages/index";
+import Friends from "./pages/Friends/index";
 
 function Router() {
   const [user, setUser] = useState(null);
@@ -12,6 +14,18 @@ function Router() {
     {
       path: "/",
       element: <App user={user} setUser={setUser} />,
+      children: [
+        {
+          path: "messages",
+          element: <Messages />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "friends",
+          element: <Friends />,
+          errorElement: <ErrorPage />,
+        },
+      ],
       errorElement: <ErrorPage />,
     },
     {
