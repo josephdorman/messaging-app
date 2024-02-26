@@ -5,6 +5,7 @@ function Sidebar() {
   return (
     <>
       <SidebarComp
+        searchbar={true}
         body={
           <>
             <div className="category">
