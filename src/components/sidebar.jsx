@@ -1,120 +1,24 @@
-import "../styles/sidebar.css";
 import profile from "../assets/profileIcon.svg";
+import "../styles/sidebar.css";
+import UserContext from "../providers/userContext";
+import { useContext } from "react";
 
-function Sidebar() {
-  function fillChat() {
-    return (
-      <>
-        <div className="ch-wrapper">
-          <div className="ch">
-            <img className="icon-md" src={profile} alt="" />
-            <div>
-              <h3 className="ch-name">Philip Morano</h3>
-              <p className="last-msg">Are you busy atm?</p>
-            </div>
-          </div>
-          <div className="ch-info">
-            <p>10:22</p>
-            <p>(2)</p>
-          </div>
-        </div>
-        <div className="ch-wrapper">
-          <div className="ch">
-            <img className="icon-md" src={profile} alt="" />
-            <div>
-              <h3 className="ch-name">Philip Morano</h3>
-              <p className="last-msg">Are you busy atm?</p>
-            </div>
-          </div>
-          <div className="ch-info">
-            <p>10:22</p>
-            <p>(2)</p>
-          </div>
-        </div>
-        <div className="ch-wrapper">
-          <div className="ch">
-            <img className="icon-md" src={profile} alt="" />
-            <div>
-              <h3 className="ch-name">Philip Morano</h3>
-              <p className="last-msg">Are you busy atm?</p>
-            </div>
-          </div>
-          <div className="ch-info">
-            <p>10:22</p>
-            <p>(2)</p>
-          </div>
-        </div>
-      </>
-    );
-  }
+function Sidebar(props) {
+  const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="sidebar">
-      <div className="category">
-        <h2>Messages</h2>
-        <p>People, Group, Messages</p>
-      </div>
-      <div className="search">
-        <button id="search" className="nav-btn"></button>
-        <input
-          className="search-bar"
-          type="text"
-          placeholder="Search People, Groups, Messages"
-        />
-      </div>
-      <div className="list">
-        <div className="ch-wrapper">
-          <div className="ch">
-            <img className="icon-md" src={profile} alt="" />
-            <div>
-              <h3 className="ch-name">Philip Morano</h3>
-              <p className="last-msg">Are you busy atm?</p>
-            </div>
-          </div>
-          <div className="ch-info">
-            <p>10:22</p>
-            <p>(2)</p>
+    <>
+      <div className="sidebar">
+        {props.body}
+        <div className="ch user">
+          <img className="icon-md" src={profile} alt="" />
+          <div>
+            <h3 className="ch-name">{user.username}</h3>
+            <p className="status">Online</p>
           </div>
         </div>
-        <div className="ch-wrapper">
-          <div className="ch">
-            <img className="icon-md" src={profile} alt="" />
-            <div>
-              <h3 className="ch-name">Philip Morano</h3>
-              <p className="last-msg">Are you busy atm?</p>
-            </div>
-          </div>
-          <div className="ch-info">
-            <p>10:22</p>
-            <p>(2)</p>
-          </div>
-        </div>
-        <div className="ch-wrapper">
-          <div className="ch">
-            <img className="icon-md" src={profile} alt="" />
-            <div>
-              <h3 className="ch-name">Philip Morano</h3>
-              <p className="last-msg">Are you busy atm?</p>
-            </div>
-          </div>
-          <div className="ch-info">
-            <p>10:22</p>
-            <p>(2)</p>
-          </div>
-        </div>
-        {fillChat()}
-        {fillChat()}
-        {fillChat()}
-        {fillChat()}
       </div>
-      <div className="ch user">
-        <img className="icon-md" src={profile} alt="" />
-        <div>
-          <h3 className="ch-name">Joseph Dorman</h3>
-          <p className="status">Online</p>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 
