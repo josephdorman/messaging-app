@@ -71,6 +71,7 @@
 
 .ch.user {
   background-color: var(--black);
+  grid-template-columns: auto 1fr auto;
 }
 
 #search {
@@ -80,4 +81,13 @@
 #search:hover,
 #search:focus {
   background-image: url(../assets/searchBold.svg);
+}
+
+#settings {
+  background-image: url(../assets/settingLinear.svg);
+}
+
+#settings:hover,
+#settings:focus {
+  background-image: url(../assets/settingBold.svg);
 }

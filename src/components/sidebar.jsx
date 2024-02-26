@@ -1,6 +1,7 @@
 import profile from "../assets/profileIcon.svg";
 import "../styles/sidebar.css";
 import UserContext from "../providers/userContext";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 function Sidebar(props) {
@@ -16,6 +17,9 @@ function Sidebar(props) {
             <h3 className="ch-name">{user.username}</h3>
             <p className="status">Online</p>
           </div>
+          <button id="settings" className="nav-btn">
+            <Link to="/settings"></Link>
+          </button>
         </div>
       </div>
     </>
