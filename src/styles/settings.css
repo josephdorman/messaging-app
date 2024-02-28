@@ -1,0 +1,29 @@
+.setting-category {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.setting-category h2 {
+  padding-inline: 12px;
+  font-size: var(--fs-14);
+  text-transform: uppercase;
+}
+
+.setting {
+  font-size: var(--fs-15);
+  text-align: start;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+}
+
+.setting:focus {
+  font-weight: bold;
+}
+
+.setting:hover,
+.setting:focus {
+  background-color: var(--grey);
+}
