@@ -57,14 +57,20 @@ async function getSession() {
 }
 
 async function getFriends() {
+  let friends = false;
+
   await api
     .get("/user/friends")
     .then(function (res) {
-      console.log(res, "friends");
+      console.log(res.data.friends);
+      friends = res.data.friends;
     })
     .catch(function (err) {
+      friends = false;
       console.log(err);
     });
+
+  return friends;
 }
 
 export { createUser, loginUser, getSession, getFriends };
