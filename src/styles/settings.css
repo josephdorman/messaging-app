@@ -26,11 +26,6 @@
   background-color: var(--grey);
 }
 
-.ch-settings {
-  display: flex;
-  flex-direction: column;
-}
-
 .profile {
   display: grid;
   gap: 10px;
