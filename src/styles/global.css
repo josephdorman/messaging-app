@@ -75,6 +75,10 @@ a {
   width: 80px;
 }
 
+.icon-xl {
+  width: 120px;
+}
+
 .input-wrapper {
   display: grid;
   text-align: left;
