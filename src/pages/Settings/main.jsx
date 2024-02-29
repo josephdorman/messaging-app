@@ -18,17 +18,17 @@ function Main() {
                 <h3>{user.username}</h3>
               </div>
               <div className="pf-sec">
-                <p>DISPLAY NAME</p>
+                <p className="chunky">Display Name</p>
                 <p>{user.username}</p>
                 <button className="btn edit">Edit</button>
               </div>
               <div className="pf-sec">
-                <p>EMAIL</p>
+                <p className="chunky">Email</p>
                 <p>********@******</p>
                 <button className="btn edit">Edit</button>
               </div>
               <div className="pf-sec">
-                <p>PASSWORD</p>
+                <p className="chunky">Password</p>
                 <p>********</p>
                 <button className="btn edit">Edit</button>
               </div>

@@ -6,8 +6,6 @@
 
 .setting-category h2 {
   padding-inline: 12px;
-  font-size: var(--fs-14);
-  text-transform: uppercase;
 }
 
 .setting {

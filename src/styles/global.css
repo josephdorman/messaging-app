@@ -133,6 +133,12 @@ a {
   font-size: var(--fs-14);
 }
 
+.chunky {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: var(--fs-15);
+}
+
 @media (max-width: 640px) {
   .panel {
     flex-direction: column;

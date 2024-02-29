@@ -15,13 +15,13 @@ function Sidebar() {
             </div>
             <div className="list">
               <div className="setting-category">
-                <h2>User Settings</h2>
-                <button className="setting">My Account</button>
+                <h2 className="chunky">User Settings</h2>
+                <button className="setting ">My Account</button>
                 <button className="setting">Profiles</button>
                 <button className="setting">Security</button>
               </div>
               <div className="setting-category">
-                <h2>App Settings</h2>
+                <h2 className="chunky">App Settings</h2>
                 <button className="setting">Theme</button>
                 <button className="setting">Language</button>
                 <button className="setting">Display</button>
