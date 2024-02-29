@@ -1,0 +1,30 @@
+.ch-wrapper:hover > #view {
+  display: block;
+}
+
+.nav-profile {
+  align-self: center;
+  display: flex;
+}
+
+.friend-pfn {
+  font-size: var(--fs-24);
+}
+
+.about-me {
+  margin-top: 30px;
+}
+
+.about-me .chunky {
+  text-align: center;
+}
+
+#view {
+  display: none;
+  background-image: url(../assets/arrowLinear.svg);
+}
+
+#view:hover,
+#view:focus {
+  background-image: url(../assets/arrowBold.svg);
+}
