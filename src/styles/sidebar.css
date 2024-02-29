@@ -53,6 +53,7 @@
 .ch-wrapper {
   display: grid;
   background-color: transparent;
+  align-items: center;
   border: none;
   grid-template-columns: auto 1fr auto;
   text-align: start;
