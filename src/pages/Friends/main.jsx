@@ -1,7 +1,6 @@
 import profile from "../../assets/profileIcon.svg";
-import addImg from "../../assets/addLinear.svg";
 import MainComp from "../../components/main";
-import { Link } from "react-router-dom";
+import FriendNav from "./friendNav";
 
 function Main() {
   return (
@@ -9,24 +8,7 @@ function Main() {
       <MainComp
         body={
           <>
-            <nav className="nav-friends">
-              <button className="chunky">
-                <Link className="no-dec" to="/friends/online">
-                  Online
-                </Link>
-              </button>
-              <button className="chunky">
-                <Link className="no-dec" to="/friends/blocked">
-                  Blocked
-                </Link>
-              </button>
-              <button id="add-friend" className="chunky">
-                <Link className="no-dec" to="/friends/add">
-                  Add Friend
-                  <img src={addImg} className="nav-btn" alt="" />
-                </Link>
-              </button>
-            </nav>
+            <FriendNav />
             <div className="pf">
               <img className="icon-xl" src={profile} alt=""></img>
               <h3 className="friend-pfn">Paul Morano</h3>
