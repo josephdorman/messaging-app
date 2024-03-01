@@ -3,10 +3,9 @@ import profile from "../../assets/profileIcon.svg";
 import { getFriends } from "../../providers/api";
 import { useEffect, useState } from "react";
 
-function Sidebar() {
+function Sidebar({ friends, setFriends }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [friends, setFriends] = useState();
 
   useEffect(() => {
     getFriends().then((res) => {
