@@ -7,6 +7,8 @@ import Login from "./components/login";
 import Settings from "./pages/Settings/index";
 import Messages from "./pages/Messages/index";
 import Friends from "./pages/Friends/index";
+import Online from "./pages/Friends/online";
+import FriendsProfile from "./pages/Friends/profile";
 
 function Router() {
   const [user, setUser] = useState(null);
@@ -29,6 +31,23 @@ function Router() {
         {
           path: "friends",
           element: <Friends />,
+          children: [
+            {
+              path: "/friends",
+              element: <Online />,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: ":id",
+              element: <FriendsProfile />,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "online",
+              element: <Online />,
+              errorElement: <ErrorPage />,
+            },
+          ],
           errorElement: <ErrorPage />,
         },
       ],
