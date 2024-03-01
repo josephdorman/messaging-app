@@ -2,6 +2,53 @@
   display: block;
 }
 
+.pf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 650px;
+  margin-inline: auto;
+  margin-top: 150px;
+}
+
+.nav-friends {
+  display: flex;
+  align-self: center;
+  justify-content: start;
+  margin-inline: 40px;
+}
+
+.nav-friends button {
+  position: relative;
+  background-color: transparent;
+  border: none;
+}
+
+.nav-friends button::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(231, 231, 231);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-friends button:hover::before,
+.nav-friends button:focus::before {
+  transform: scaleX(1);
+}
+
+#add-friend {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
 .nav-profile {
   align-self: center;
   display: flex;
@@ -27,4 +74,22 @@
 #view:hover,
 #view:focus {
   background-image: url(../assets/arrowBold.svg);
+}
+
+#remove {
+  background-image: url(../assets/userRemoveLinear.svg);
+}
+
+#remove:hover,
+#remove:focus {
+  background-image: url(../assets/userRemoveBold.svg);
+}
+
+#warn {
+  background-image: url(../assets/warnLinear.svg);
+}
+
+#warn:hover,
+#warn:focus {
+  background-image: url(../assets/warnBold.svg);
 }
