@@ -45,6 +45,9 @@
 
 #add-friend {
   margin-left: auto;
+}
+
+#add-friend a {
   display: flex;
   align-items: center;
 }
@@ -64,6 +67,11 @@
 
 .about-me .chunky {
   text-align: center;
+}
+
+.no-dec {
+  text-decoration: none;
+  color: white;
 }
 
 #view {

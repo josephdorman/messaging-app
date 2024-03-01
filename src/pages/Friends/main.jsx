@@ -1,6 +1,7 @@
 import profile from "../../assets/profileIcon.svg";
 import addImg from "../../assets/addLinear.svg";
 import MainComp from "../../components/main";
+import { Link } from "react-router-dom";
 
 function Main() {
   return (
@@ -9,11 +10,21 @@ function Main() {
         body={
           <>
             <nav className="nav-friends">
-              <button className="chunky">Online</button>
-              <button className="chunky">Blocked</button>
+              <button className="chunky">
+                <Link className="no-dec" to="/friends/online">
+                  Online
+                </Link>
+              </button>
+              <button className="chunky">
+                <Link className="no-dec" to="/friends/blocked">
+                  Blocked
+                </Link>
+              </button>
               <button id="add-friend" className="chunky">
-                Add Friend
-                <img src={addImg} className="nav-btn" alt="" />
+                <Link className="no-dec" to="/friends/add">
+                  Add Friend
+                  <img src={addImg} className="nav-btn" alt="" />
+                </Link>
               </button>
             </nav>
             <div className="pf">
