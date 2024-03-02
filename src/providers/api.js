@@ -60,7 +60,7 @@ async function getFriends() {
   let friends = false;
 
   await api
-    .get("/user/friends")
+    .get("/friends")
     .then(function (res) {
       console.log(res.data.friends);
       friends = res.data.friends;
