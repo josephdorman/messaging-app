@@ -2,6 +2,7 @@ import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
 import { getFriends } from "../../providers/api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Sidebar({ friends, setFriends }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,10 +46,12 @@ function Sidebar({ friends, setFriends }) {
               ) : (
                 friends &&
                 friends.map((friend) => (
-                  <button key={friend._id} className="ch-wrapper">
-                    <img className="icon-md" src={profile} alt="" />
-                    <h3 className="ch-name">{friend.username}</h3>
-                    <button id="view" className="nav-btn"></button>
+                  <button className="def-btn" key={friend._id}>
+                    <Link className="ch-wrapper" to={`/friends/${friend._id}`}>
+                      <img className="icon-md" src={profile} alt="" />
+                      <h3 className="ch-name">{friend.username}</h3>
+                      <div id="view" className="nav-btn"></div>
+                    </Link>
                   </button>
                 ))
               )}

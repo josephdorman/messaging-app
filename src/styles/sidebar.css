@@ -50,6 +50,15 @@
   padding-right: calc(var(--col-grid) - 5px);
 }
 
+.def-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.def-btn a {
+  text-decoration: none;
+}
+
 .ch-wrapper {
   display: grid;
   background-color: transparent;
