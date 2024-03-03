@@ -62,15 +62,32 @@ async function getFriends() {
   await api
     .get("/friends")
     .then(function (res) {
-      console.log(res.data.friends);
+      //console.log(res.data.friends);
       friends = res.data.friends;
     })
     .catch(function (err) {
       friends = false;
-      console.log(err);
+      //console.log(err);
     });
 
   return friends;
 }
 
-export { createUser, loginUser, getSession, getFriends };
+async function getFriendProfile(id) {
+  let friend = false;
+
+  await api
+    .get(`/friend/${id}`)
+    .then(function (res) {
+      console.log(res.data);
+      friend = res.data;
+    })
+    .catch(function (err) {
+      friend = false;
+      console.log(err);
+    });
+
+  return friend;
+}
+
+export { createUser, loginUser, getSession, getFriends, getFriendProfile };
