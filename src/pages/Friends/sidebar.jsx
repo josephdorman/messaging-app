@@ -4,7 +4,8 @@ import { getFriends } from "../../providers/api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Sidebar({ friends, setFriends }) {
+function Sidebar() {
+  const [friends, setFriends] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
