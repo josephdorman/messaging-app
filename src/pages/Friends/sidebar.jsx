@@ -1,13 +1,16 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
 import { getFriends } from "../../providers/api";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ currentProfile, setCurrentProfile }) {
   const [friends, setFriends] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+  const oldProfile = useRef(null);
+  const btnRef = useRef([]);
 
   useEffect(() => {
     getFriends().then((res) => {
@@ -20,6 +23,17 @@ function Sidebar() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    if (currentProfile !== null) {
+      if (oldProfile.current !== null) {
+        btnRef.current[oldProfile.current].className = "ch-wrapper";
+      }
+      btnRef.current[currentProfile].className = "ch-wrapper focus";
+    }
+
+    oldProfile.current = currentProfile;
+  }, [currentProfile]);
 
   return (
     <>
@@ -48,7 +62,12 @@ function Sidebar() {
                 friends &&
                 friends.map((friend) => (
                   <button className="def-btn" key={friend._id}>
-                    <Link className="ch-wrapper" to={`/friends/${friend._id}`}>
+                    <Link
+                      ref={(e) => (btnRef.current[friend._id] = e)}
+                      onClick={() => setCurrentProfile(friend._id)}
+                      className="ch-wrapper"
+                      to={`/friends/${friend._id}`}
+                    >
                       <img className="icon-md" src={profile} alt="" />
                       <h3 className="ch-name">{friend.username}</h3>
                       <div id="view" className="nav-btn"></div>

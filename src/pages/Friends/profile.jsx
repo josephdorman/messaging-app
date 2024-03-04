@@ -1,12 +1,13 @@
 import profile from "../../assets/profileIcon.svg";
 import { useEffect, useState } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useOutletContext } from "react-router-dom";
 import { getFriendProfile } from "../../providers/api";
 
 function Profile() {
   const [friendProfile, setFriendProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const setCurrentProfile = useOutletContext();
   const match = useMatch("/friends/:id");
 
   useEffect(() => {
@@ -14,6 +15,7 @@ function Profile() {
       setFriendProfile(res);
 
       if (res !== false) {
+        setCurrentProfile(match.params.id);
         setIsLoading(false);
       } else {
         setIsError(true);

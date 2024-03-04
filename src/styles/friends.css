@@ -1,7 +1,3 @@
-.ch-wrapper:hover > #view {
-  display: block;
-}
-
 .pf {
   display: flex;
   flex-direction: column;
@@ -74,13 +70,25 @@
   color: white;
 }
 
+.focus {
+  background-color: var(--grey);
+}
+
+.focus > #view {
+  display: block;
+  background-image: url(../assets/arrowBold.svg);
+}
+
+.ch-wrapper:hover > #view {
+  display: block;
+}
+
 #view {
   display: none;
   background-image: url(../assets/arrowLinear.svg);
 }
 
-#view:hover,
-#view:focus {
+#view:hover {
   background-image: url(../assets/arrowBold.svg);
 }
 
