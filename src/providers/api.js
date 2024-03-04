@@ -79,7 +79,6 @@ async function getFriendProfile(id) {
   await api
     .get(`/friend/${id}`)
     .then(function (res) {
-      console.log(res.data);
       friend = res.data;
     })
     .catch(function (err) {
