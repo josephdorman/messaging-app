@@ -3,7 +3,11 @@ import Navbar from "./components/navbar";
 import { Navigate, Outlet } from "react-router-dom";
 import { getSession } from "./providers/api";
 import UserContext from "./providers/userContext";
+import SocketContext from "./providers/socketContext";
 import { useEffect, useState } from "react";
+import io from "socket.io-client";
+
+const socket = io.connect("http://localhost:3000");
 
 function App({ user, setUser }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,10 +33,12 @@ function App({ user, setUser }) {
         <div>Loading...</div>
       ) : (
         <div className="app">
-          <UserContext.Provider value={{ user, setUser }}>
-            <Navbar />
-            <Outlet />
-          </UserContext.Provider>
+          <SocketContext.Provider value={{ socket }}>
+            <UserContext.Provider value={{ user, setUser }}>
+              <Navbar />
+              <Outlet />
+            </UserContext.Provider>
+          </SocketContext.Provider>
         </div>
       )}
     </>
