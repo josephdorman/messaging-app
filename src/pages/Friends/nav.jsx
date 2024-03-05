@@ -1,4 +1,3 @@
-import profile from "../../assets/profileIcon.svg";
 import addImg from "../../assets/addLinear.svg";
 import { Link } from "react-router-dom";
 
