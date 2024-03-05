@@ -8,7 +8,7 @@ function Main({ setCurrentProfile }) {
       <MainComp
         body={
           <>
-            <Nav />
+            <Nav setCurrentProfile={setCurrentProfile} />
             <Outlet context={setCurrentProfile} />
           </>
         }
