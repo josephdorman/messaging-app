@@ -62,12 +62,11 @@ async function getFriends() {
   await api
     .get("/friends")
     .then(function (res) {
-      //console.log(res.data.friends);
       friends = res.data.friends;
     })
     .catch(function (err) {
       friends = false;
-      //console.log(err);
+      console.log(err);
     });
 
   return friends;
