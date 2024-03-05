@@ -23,6 +23,15 @@ function FriendNav({ setCurrentProfile }) {
           <Link
             onClick={unFocusProfile}
             className="no-dec"
+            to="/friends/pending"
+          >
+            Pending (1)
+          </Link>
+        </button>
+        <button className="chunky">
+          <Link
+            onClick={unFocusProfile}
+            className="no-dec"
             to="/friends/blocked"
           >
             Blocked
