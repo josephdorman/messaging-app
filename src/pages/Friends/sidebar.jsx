@@ -25,10 +25,11 @@ function Sidebar({ currentProfile, setCurrentProfile }) {
   }, []);
 
   useEffect(() => {
+    if (oldProfile.current !== null) {
+      btnRef.current[oldProfile.current].className = "ch-wrapper";
+    }
+
     if (currentProfile !== null) {
-      if (oldProfile.current !== null) {
-        btnRef.current[oldProfile.current].className = "ch-wrapper";
-      }
       btnRef.current[currentProfile].className = "ch-wrapper focus";
     }
 
