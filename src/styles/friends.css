@@ -73,7 +73,7 @@
 .friends-online {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgb(136, 132, 132);
+  border-top: 1px solid var(--light-grey);
   margin-inline: 40px;
 }
 
@@ -82,7 +82,42 @@
   align-items: center;
   gap: 10px;
   padding: 15px;
-  border-bottom: 1px solid rgb(136, 132, 132);
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.add-friend-wrapper {
+  margin-inline: 40px;
+}
+
+.add-friend-wrapper p {
+  font-size: var(--fs-14);
+  color: var(--light-grey);
+}
+
+.friend-add {
+  background-color: var(--dark-grey);
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.friend-add .search-bar {
+  padding-inline: 15px;
+}
+
+.friend-add button {
+  margin-right: 15px;
+  background-color: whitesmoke;
+  color: var(--black);
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.friend-add button:hover {
+  color: whitesmoke;
+  background-color: var(--grey);
 }
 
 .focus {

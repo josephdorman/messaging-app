@@ -2,6 +2,7 @@ html {
   --black: #161616;
   --dark-grey: #1c1c1c;
   --grey: #242424;
+  --light-grey: rgb(136, 132, 132);
 
   --fs-14: 0.875rem;
   --fs-15: 0.9375rem;
