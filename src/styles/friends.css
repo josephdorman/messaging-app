@@ -70,6 +70,21 @@
   color: white;
 }
 
+.friends-online {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgb(136, 132, 132);
+  margin-inline: 40px;
+}
+
+.fr-online {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-bottom: 1px solid rgb(136, 132, 132);
+}
+
 .focus {
   background-color: var(--grey);
 }
