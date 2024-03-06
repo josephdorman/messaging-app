@@ -13,6 +13,7 @@ import Messages from "./pages/Messages/index";
 import Friends from "./pages/Friends/index";
 import Online from "./pages/Friends/online";
 import FriendsProfile from "./pages/Friends/profile";
+import Add from "./pages/Friends/add";
 
 function Router() {
   const [user, setUser] = useState(null);
@@ -51,6 +52,11 @@ function Router() {
             {
               path: "online",
               element: <Online />,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "add",
+              element: <Add />,
               errorElement: <ErrorPage />,
             },
           ],
