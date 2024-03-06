@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import ErrorPage from "./components/errorPage";
 import App from "./App";
 import Signup from "./components/signup";
@@ -15,9 +19,12 @@ function Router() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
       element: <App user={user} setUser={setUser} />,
       children: [
+        {
+          path: "/",
+          element: <Navigate to="/friends/online" replace={true} />,
+        },
         {
           path: "settings",
           element: <Settings />,
@@ -34,8 +41,7 @@ function Router() {
           children: [
             {
               path: "/friends",
-              element: <Online />,
-              errorElement: <ErrorPage />,
+              element: <Navigate to="/friends/online" replace={true} />,
             },
             {
               path: ":id",
