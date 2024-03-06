@@ -19,6 +19,7 @@ function App({ user, setUser }) {
 
       if (res !== false) {
         setIsLoading(false);
+        socket.emit("user_online", { id: res._id });
       } else {
         setIsError(true);
       }
