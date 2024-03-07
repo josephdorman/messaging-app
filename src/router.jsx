@@ -14,6 +14,7 @@ import Friends from "./pages/Friends/index";
 import Online from "./pages/Friends/online";
 import FriendsProfile from "./pages/Friends/profile";
 import Add from "./pages/Friends/add";
+import Pending from "./pages/Friends/pending";
 
 function Router() {
   const [user, setUser] = useState(null);
@@ -57,6 +58,11 @@ function Router() {
             {
               path: "add",
               element: <Add />,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "pending",
+              element: <Pending />,
               errorElement: <ErrorPage />,
             },
           ],
