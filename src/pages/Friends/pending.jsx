@@ -1,15 +1,50 @@
 import profile from "../../assets/profileIcon.svg";
+import { useState, useEffect } from "react";
+import { getFriendRequests } from "../../providers/api";
 
 function Pending() {
+  const [requests, setRequests] = useState(null);
+
+  useEffect(() => {
+    getFriendRequests().then((res) => {
+      setRequests(res);
+    });
+  }, []);
+
   return (
     <>
       <div className="pending">
-        <h3 className="chunky">Pending - 0</h3>
+        {requests ? (
+          <h3 className="chunky">
+            Pending - {requests.sent.length + requests.received.length}
+          </h3>
+        ) : (
+          <h3 className="chunky">Pending - 0</h3>
+        )}
         <div className="fr-layout">
-          <div className="fr">
-            <img className="icon-md" src={profile} alt="" />
-            <p>fhsdjhfjksdhfjksdhfjk</p>
-          </div>
+          {requests &&
+            requests.received.map((user) => (
+              <div key={user._id} className="fr fr-pending">
+                <img className="icon-md" src={profile} alt="" />
+                <div>
+                  <p>{user.username}</p>
+                  <p className="pending-status">Incoming friend request</p>
+                </div>
+                <button id="accept" className="nav-btn"></button>
+                <button id="decline" className="nav-btn"></button>
+              </div>
+            ))}
+          {requests &&
+            requests.sent.map((user) => (
+              <div className="fr fr-pending">
+                <img className="icon-md" src={profile} alt="" />
+                <div>
+                  <p>{user.username}</p>
+                  <p className="pending-status">Outgoing friend request</p>
+                </div>
+                <button id="decline" className="nav-btn"></button>
+              </div>
+            ))}
         </div>
       </div>
     </>

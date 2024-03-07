@@ -88,6 +88,22 @@ async function getFriendProfile(id) {
   return friend;
 }
 
+async function getFriendRequests() {
+  let requests = false;
+
+  await api
+    .get("/friends/pending")
+    .then(function (res) {
+      requests = res.data.friendRequests;
+    })
+    .catch(function (err) {
+      requests = false;
+      console.log(err);
+    });
+
+  return requests;
+}
+
 async function sendFriendRequest(e, id) {
   e.preventDefault();
   const name = e.target.form.sendReq.value;
@@ -111,5 +127,6 @@ export {
   getSession,
   getFriends,
   getFriendProfile,
+  getFriendRequests,
   sendFriendRequest,
 };

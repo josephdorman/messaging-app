@@ -96,6 +96,15 @@
   border-top: 1px solid var(--light-grey);
 }
 
+.fr div {
+  margin-right: auto;
+}
+
+.pending-status {
+  color: var(--light-grey);
+  font-size: var(--fs-15);
+}
+
 .add-friend-wrapper p {
   font-size: var(--fs-14);
   color: var(--light-grey);
@@ -165,4 +174,22 @@
 #warn:hover,
 #warn:focus {
   background-image: url(../assets/warnBold.svg);
+}
+
+#accept {
+  background-image: url(../assets/acceptLinear.svg);
+}
+
+#accept:hover,
+#accept:focus {
+  background-image: url(../assets/acceptBold.svg);
+}
+
+#decline {
+  background-image: url(../assets/declineLinear.svg);
+}
+
+#decline:hover,
+#decline:focus {
+  background-image: url(../assets/declineBold.svg);
 }
