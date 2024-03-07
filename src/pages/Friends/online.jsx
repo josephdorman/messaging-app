@@ -17,10 +17,10 @@ function Online() {
     <>
       <div className="online">
         <h3 className="chunky">Online - 1</h3>
-        <div className="friends-layout">
+        <div className="fr-layout">
           {friends &&
             friends.map((friend) => (
-              <div key={friend.socketId} className="fr-online">
+              <div key={friend.socketId} className="fr">
                 <img className="icon-md" src={profile} alt="" />
                 <p>{friend.userId}</p>
               </div>
