@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function FriendNav({ setCurrentProfile }) {
   const unFocusProfile = () => {
-    console.log("test");
     setCurrentProfile(null);
   };
 
