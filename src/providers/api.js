@@ -36,6 +36,17 @@ async function loginUser(e) {
     });
 }
 
+async function logoutUser() {
+  await api
+    .post("/user/logout")
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 async function getSession() {
   let user = false;
 
@@ -140,6 +151,7 @@ async function sendFriendRequest(e, id) {
 export {
   createUser,
   loginUser,
+  logoutUser,
   getSession,
   getFriends,
   getFriendProfile,

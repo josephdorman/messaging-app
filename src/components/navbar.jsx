@@ -1,12 +1,20 @@
 import "../styles/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import { logoutUser } from "../providers/api";
 
 /// REGARDING LOGOUT BUTTON ///
 // create a modal for logout confirmation
 // currently is automatic and asks for no confirmation for testing/development purposes
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    logoutUser();
+    navigate("/login");
+  };
+
   return (
     <div className="navbar">
       <div className="logo-wrapper">
@@ -27,7 +35,7 @@ function Navbar() {
           <Link to="/messages"></Link>
         </button>
       </nav>
-      <button id="logout" className="nav-btn"></button>
+      <button onClick={logout} id="logout" className="nav-btn"></button>
     </div>
   );
 }
