@@ -14,13 +14,10 @@ function Pending() {
   return (
     <>
       <div className="pending">
-        {requests ? (
-          <h3 className="chunky">
-            Pending - {requests.sent.length + requests.received.length}
-          </h3>
-        ) : (
-          <h3 className="chunky">Pending - 0</h3>
-        )}
+        <h3 className="chunky">
+          Pending -{" "}
+          {requests ? requests.received.length + requests.sent.length : 0}
+        </h3>
         <div className="fr-layout">
           {requests &&
             requests.received.map((user) => (
