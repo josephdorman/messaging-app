@@ -1,17 +1,30 @@
+import { sendFriendRequest } from "../../providers/api";
+import userContext from "../../providers/userContext";
+import { useContext } from "react";
+
 function Add() {
+  const { user } = useContext(userContext);
+
   return (
     <>
       <div className="add-friend-wrapper">
         <h3 className="chunky">Add Friend</h3>
         <p>You can add friends here by their username</p>
-        <div className="search friend-add">
+        <form className="search friend-add">
           <input
             className="search-bar"
             type="text"
+            id="sendReq"
+            name="sendReq"
             placeholder="You can add friends here by their username"
           />
-          <button>Send Friend Request</button>
-        </div>
+          <button
+            onClick={(e) => sendFriendRequest(e, user._id)}
+            id="send-request"
+          >
+            Send Friend Request
+          </button>
+        </form>
       </div>
     </>
   );

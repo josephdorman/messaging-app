@@ -88,4 +88,28 @@ async function getFriendProfile(id) {
   return friend;
 }
 
-export { createUser, loginUser, getSession, getFriends, getFriendProfile };
+async function sendFriendRequest(e, id) {
+  e.preventDefault();
+  const name = e.target.form.sendReq.value;
+
+  await api
+    .post("/friend/request", {
+      friendName: name,
+      userId: id,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+export {
+  createUser,
+  loginUser,
+  getSession,
+  getFriends,
+  getFriendProfile,
+  sendFriendRequest,
+};
