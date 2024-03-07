@@ -16,7 +16,11 @@ function Online() {
   return (
     <>
       <div className="online">
-        <h3 className="chunky">Online - 1</h3>
+        {friends ? (
+          <h3 className="chunky">Online - {friends.length}</h3>
+        ) : (
+          <h3 className="chunky">Online - 0</h3>
+        )}
         <div className="fr-layout">
           {friends &&
             friends.map((friend) => (
