@@ -33,7 +33,7 @@ function Pending() {
             ))}
           {requests &&
             requests.sent.map((user) => (
-              <div className="fr fr-pending">
+              <div key={user._id} className="fr fr-pending">
                 <img className="icon-md" src={profile} alt="" />
                 <div>
                   <p>{user.username}</p>
