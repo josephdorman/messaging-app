@@ -2,6 +2,10 @@ import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
+/// REGARDING LOGOUT BUTTON ///
+// create a modal for logout confirmation
+// currently is automatic and asks for no confirmation for testing/development purposes
+
 function Navbar() {
   return (
     <div className="navbar">
@@ -23,9 +27,7 @@ function Navbar() {
           <Link to="/messages"></Link>
         </button>
       </nav>
-      <button id="logout" className="nav-btn">
-        <Link to="/logout"></Link>
-      </button>
+      <button id="logout" className="nav-btn"></button>
     </div>
   );
 }
