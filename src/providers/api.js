@@ -104,6 +104,22 @@ async function getFriendRequests() {
   return requests;
 }
 
+async function getBlocked() {
+  let blocked = false;
+
+  await api
+    .get("/friends/blocked")
+    .then(function (res) {
+      blocked = res.data.blocked;
+    })
+    .catch(function (err) {
+      blocked = false;
+      console.log(err);
+    });
+
+  return blocked;
+}
+
 async function sendFriendRequest(e, id) {
   e.preventDefault();
   const name = e.target.form.sendReq.value;
@@ -128,5 +144,6 @@ export {
   getFriends,
   getFriendProfile,
   getFriendRequests,
+  getBlocked,
   sendFriendRequest,
 };

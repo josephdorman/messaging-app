@@ -72,12 +72,14 @@
 
 .online,
 .pending,
-.add-friend-wrapper {
+.add-friend-wrapper,
+.blocked {
   margin-inline: 40px;
 }
 
 .online h3,
-.pending h3 {
+.pending h3,
+.blocked h3 {
   color: var(--light-grey);
   font-size: var(--fs-12);
   margin-bottom: 8px;
