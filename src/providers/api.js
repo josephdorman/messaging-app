@@ -148,6 +148,19 @@ async function sendFriendRequest(e, id) {
     });
 }
 
+async function acceptFriendRequest(id) {
+  await api
+    .post(`/friend/accept`, {
+      friendId: id,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 export {
   createUser,
   loginUser,
@@ -158,4 +171,5 @@ export {
   getFriendRequests,
   getBlocked,
   sendFriendRequest,
+  acceptFriendRequest,
 };

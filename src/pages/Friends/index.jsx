@@ -5,14 +5,21 @@ import { useState } from "react";
 
 function Index() {
   const [currentProfile, setCurrentProfile] = useState(null);
+  const [newFriend, setNewFriend] = useState(false);
 
   return (
     <>
       <Sidebar
         currentProfile={currentProfile}
         setCurrentProfile={setCurrentProfile}
+        newFriend={newFriend}
+        setNewFriend={setNewFriend}
       />
-      <Main setCurrentProfile={setCurrentProfile} />
+      <Main
+        setCurrentProfile={setCurrentProfile}
+        newFriend={newFriend}
+        setNewFriend={setNewFriend}
+      />
     </>
   );
 }

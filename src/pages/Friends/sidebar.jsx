@@ -4,7 +4,12 @@ import { getFriends } from "../../providers/api";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
-function Sidebar({ currentProfile, setCurrentProfile }) {
+function Sidebar({
+  currentProfile,
+  setCurrentProfile,
+  newFriend,
+  setNewFriend,
+}) {
   const [friends, setFriends] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -22,7 +27,8 @@ function Sidebar({ currentProfile, setCurrentProfile }) {
         setIsError(true);
       }
     });
-  }, []);
+    setNewFriend(false);
+  }, [newFriend]);
 
   useEffect(() => {
     if (oldProfile.current !== null) {
