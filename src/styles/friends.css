@@ -182,8 +182,7 @@
   background-image: url(../assets/acceptLinear.svg);
 }
 
-#accept:hover,
-#accept:focus {
+#accept:hover {
   background-image: url(../assets/acceptBold.svg);
 }
 
@@ -191,7 +190,6 @@
   background-image: url(../assets/declineLinear.svg);
 }
 
-#decline:hover,
-#decline:focus {
+#decline:hover {
   background-image: url(../assets/declineBold.svg);
 }
