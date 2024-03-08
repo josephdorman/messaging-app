@@ -24,7 +24,7 @@ function FriendNav({ setCurrentProfile }) {
             className="no-dec"
             to="/friends/pending"
           >
-            Pending (1)
+            Pending
           </Link>
         </button>
         <button className="chunky">
