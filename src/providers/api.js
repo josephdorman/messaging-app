@@ -161,6 +161,20 @@ async function acceptFriendRequest(id) {
     });
 }
 
+async function cancelFriendRequest(id, type) {
+  await api
+    .post(`/friend/cancel`, {
+      friendId: id,
+      type: type,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 export {
   createUser,
   loginUser,
@@ -172,4 +186,5 @@ export {
   getBlocked,
   sendFriendRequest,
   acceptFriendRequest,
+  cancelFriendRequest,
 };
