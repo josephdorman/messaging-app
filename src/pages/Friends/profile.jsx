@@ -7,7 +7,7 @@ function Profile() {
   const [friendProfile, setFriendProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const setCurrentProfile = useOutletContext();
+  const { setCurrentProfile } = useOutletContext();
   const match = useMatch("/friends/:id");
 
   useEffect(() => {
