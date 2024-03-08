@@ -15,11 +15,7 @@ function Index() {
         newFriend={newFriend}
         setNewFriend={setNewFriend}
       />
-      <Main
-        setCurrentProfile={setCurrentProfile}
-        newFriend={newFriend}
-        setNewFriend={setNewFriend}
-      />
+      <Main setCurrentProfile={setCurrentProfile} setNewFriend={setNewFriend} />
     </>
   );
 }

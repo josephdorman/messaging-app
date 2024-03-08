@@ -8,18 +8,22 @@ import {
 } from "../../providers/api";
 
 function Pending() {
-  const { setNewFriend, newFriend } = useOutletContext();
+  const { setNewFriend } = useOutletContext();
   const [requests, setRequests] = useState(null);
 
   useEffect(() => {
     getFriendRequests().then((res) => {
       setRequests(res);
     });
-  }, [newFriend]);
+  }, []);
 
   const onAccept = (id) => {
     acceptFriendRequest(id);
     setNewFriend(true);
+    setRequests({
+      ...requests,
+      received: requests.received.filter((user) => user._id !== id),
+    });
   };
 
   const onCancel = (id, type) => {
@@ -30,7 +34,7 @@ function Pending() {
         sent: requests.sent.filter((user) => user._id !== id),
       });
     } else {
-      setRequest({
+      setRequests({
         ...requests,
         received: requests.received.filter((user) => user._id !== id),
       });
