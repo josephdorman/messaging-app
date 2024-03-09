@@ -1,13 +1,14 @@
 import profile from "../../assets/profileIcon.svg";
 import { useEffect, useState } from "react";
-import { useMatch, useOutletContext } from "react-router-dom";
-import { getFriendProfile } from "../../providers/api";
+import { useMatch, useOutletContext, useNavigate } from "react-router-dom";
+import { getFriendProfile, removeFriend } from "../../providers/api";
 
 function Profile() {
+  const navigate = useNavigate();
   const [friendProfile, setFriendProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const { setCurrentProfile } = useOutletContext();
+  const { setCurrentProfile, setNewFriend } = useOutletContext();
   const match = useMatch("/friends/:id");
 
   useEffect(() => {
@@ -23,6 +24,12 @@ function Profile() {
     });
   }, [match]);
 
+  const removeFriendFromList = (id) => {
+    removeFriend(id);
+    setNewFriend(true);
+    navigate("/friends/online");
+  };
+
   return (
     <>
       {isError ? (
@@ -30,12 +37,16 @@ function Profile() {
       ) : isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="pf">
+        <div key={friendProfile._id} className="pf">
           <img className="icon-xl" src={profile} alt=""></img>
           <h3 className="friend-pfn">{friendProfile.username}</h3>
           <nav className="nav-profile">
             <button id="messages" className="nav-btn"></button>
-            <button id="remove" className="nav-btn"></button>
+            <button
+              onClick={() => removeFriendFromList(friendProfile._id)}
+              id="remove"
+              className="nav-btn"
+            ></button>
             <button id="warn" className="nav-btn"></button>
           </nav>
           <div className="about-me">

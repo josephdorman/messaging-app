@@ -131,6 +131,19 @@ async function getBlocked() {
   return blocked;
 }
 
+async function removeFriend(id) {
+  await api
+    .post("/friend/remove", {
+      friendId: id,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 async function sendFriendRequest(e, id) {
   e.preventDefault();
   const name = e.target.form.sendReq.value;
@@ -184,6 +197,7 @@ export {
   getFriendProfile,
   getFriendRequests,
   getBlocked,
+  removeFriend,
   sendFriendRequest,
   acceptFriendRequest,
   cancelFriendRequest,
