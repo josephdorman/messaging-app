@@ -20,7 +20,8 @@ function Blocked() {
             blocked.map((user) => (
               <div key={user._id} className="fr">
                 <img className="icon-md" src={profile} alt="" />
-                <p>{user.username}</p>
+                <div>{user.username}</div>
+                <button id="unblock" className="nav-btn"></button>
               </div>
             ))}
         </div>
