@@ -28,6 +28,7 @@ function Sidebar({
       }
     });
     setNewFriend(false);
+    oldProfile.current = null;
   }, [newFriend]);
 
   useEffect(() => {
