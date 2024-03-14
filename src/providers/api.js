@@ -131,6 +131,19 @@ async function getBlocked() {
   return blocked;
 }
 
+async function blockUser(id) {
+  await api
+    .post("/user/block", {
+      friendId: id,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 async function removeFriend(id) {
   await api
     .post("/friend/remove", {
@@ -197,6 +210,7 @@ export {
   getFriendProfile,
   getFriendRequests,
   getBlocked,
+  blockUser,
   removeFriend,
   sendFriendRequest,
   acceptFriendRequest,

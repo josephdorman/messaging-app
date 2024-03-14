@@ -193,3 +193,12 @@
 #decline:hover {
   background-image: url(../assets/declineBold.svg);
 }
+
+#unblock {
+  background-image: url(../assets/unblockLinear.svg);
+}
+
+#unblock:hover,
+#unblock:focus {
+  background-image: url(../assets/unblockBold.svg);
+}

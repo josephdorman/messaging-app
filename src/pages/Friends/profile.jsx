@@ -1,7 +1,7 @@
 import profile from "../../assets/profileIcon.svg";
 import { useEffect, useState } from "react";
 import { useMatch, useOutletContext, useNavigate } from "react-router-dom";
-import { getFriendProfile, removeFriend } from "../../providers/api";
+import { getFriendProfile, removeFriend, blockUser } from "../../providers/api";
 
 function Profile() {
   const navigate = useNavigate();
@@ -47,7 +47,11 @@ function Profile() {
               id="remove"
               className="nav-btn"
             ></button>
-            <button id="warn" className="nav-btn"></button>
+            <button
+              onClick={() => blockUser(friendProfile._id)}
+              id="warn"
+              className="nav-btn"
+            ></button>
           </nav>
           <div className="about-me">
             <p className="chunky">About Me</p>
