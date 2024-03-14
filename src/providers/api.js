@@ -115,6 +115,7 @@ async function getFriendRequests() {
   return requests;
 }
 
+// change route to /users/blocked
 async function getBlocked() {
   let blocked = false;
 
@@ -134,6 +135,19 @@ async function getBlocked() {
 async function blockUser(id) {
   await api
     .post("/user/block", {
+      friendId: id,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+async function unblockUser(id) {
+  await api
+    .post("/user/unblock", {
       friendId: id,
     })
     .then(function (response) {
@@ -211,6 +225,7 @@ export {
   getFriendRequests,
   getBlocked,
   blockUser,
+  unblockUser,
   removeFriend,
   sendFriendRequest,
   acceptFriendRequest,

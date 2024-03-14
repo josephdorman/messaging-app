@@ -1,6 +1,6 @@
 import profile from "../../assets/profileIcon.svg";
 import { useState, useEffect } from "react";
-import { getBlocked } from "../../providers/api";
+import { getBlocked, unblockUser } from "../../providers/api";
 
 function Blocked() {
   const [blocked, setBlocked] = useState(null);
@@ -21,7 +21,11 @@ function Blocked() {
               <div key={user._id} className="fr">
                 <img className="icon-md" src={profile} alt="" />
                 <div>{user.username}</div>
-                <button id="unblock" className="nav-btn"></button>
+                <button
+                  onClick={() => unblockUser(user._id)}
+                  id="unblock"
+                  className="nav-btn"
+                ></button>
               </div>
             ))}
         </div>
