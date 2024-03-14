@@ -30,6 +30,12 @@ function Profile() {
     navigate("/friends/online");
   };
 
+  const removeBlockedUserFromList = (id) => {
+    blockUser(id);
+    setNewFriend(true);
+    navigate("/friends/online");
+  };
+
   return (
     <>
       {isError ? (
@@ -48,7 +54,7 @@ function Profile() {
               className="nav-btn"
             ></button>
             <button
-              onClick={() => blockUser(friendProfile._id)}
+              onClick={() => removeBlockedUserFromList(friendProfile._id)}
               id="warn"
               className="nav-btn"
             ></button>
