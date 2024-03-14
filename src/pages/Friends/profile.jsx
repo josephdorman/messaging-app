@@ -24,14 +24,13 @@ function Profile() {
     });
   }, [match]);
 
-  const removeFriendFromList = (id) => {
-    removeFriend(id);
-    setNewFriend(true);
-    navigate("/friends/online");
-  };
+  const onRemoval = (e, id) => {
+    if (e.target.id === "remove") {
+      removeFriend(id);
+    } else {
+      blockUser(id);
+    }
 
-  const removeBlockedUserFromList = (id) => {
-    blockUser(id);
     setNewFriend(true);
     navigate("/friends/online");
   };
@@ -49,12 +48,12 @@ function Profile() {
           <nav className="nav-profile">
             <button id="messages" className="nav-btn"></button>
             <button
-              onClick={() => removeFriendFromList(friendProfile._id)}
+              onClick={(e) => onRemoval(e, friendProfile._id)}
               id="remove"
               className="nav-btn"
             ></button>
             <button
-              onClick={() => removeBlockedUserFromList(friendProfile._id)}
+              onClick={(e) => onRemoval(e, friendProfile._id)}
               id="warn"
               className="nav-btn"
             ></button>
