@@ -115,12 +115,11 @@ async function getFriendRequests() {
   return requests;
 }
 
-// change route to /users/blocked
 async function getBlocked() {
   let blocked = false;
 
   await api
-    .get("/friends/blocked")
+    .get("/users/blocked")
     .then(function (res) {
       blocked = res.data.blocked;
     })
