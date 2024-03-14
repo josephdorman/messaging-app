@@ -11,6 +11,11 @@ function Blocked() {
     });
   }, []);
 
+  const onUnblock = (id) => {
+    unblockUser(id);
+    setBlocked(blocked.filter((user) => user._id !== id));
+  };
+
   return (
     <>
       <div className="blocked">
@@ -22,7 +27,7 @@ function Blocked() {
                 <img className="icon-md" src={profile} alt="" />
                 <div>{user.username}</div>
                 <button
-                  onClick={() => unblockUser(user._id)}
+                  onClick={() => onUnblock(user._id)}
                   id="unblock"
                   className="nav-btn"
                 ></button>
