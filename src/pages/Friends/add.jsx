@@ -5,6 +5,11 @@ import { useContext } from "react";
 function Add() {
   const { user } = useContext(userContext);
 
+  const onClick = (e, id) => {
+    sendFriendRequest(e, id);
+    e.target.form.sendReq.value = "";
+  };
+
   return (
     <>
       <div className="add-friend-wrapper">
@@ -18,10 +23,7 @@ function Add() {
             name="sendReq"
             placeholder="You can add friends here by their username"
           />
-          <button
-            onClick={(e) => sendFriendRequest(e, user._id)}
-            id="send-request"
-          >
+          <button onClick={(e) => onClick(e, user._id)} id="send-request">
             Send Friend Request
           </button>
         </form>
