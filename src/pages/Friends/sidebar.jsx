@@ -50,7 +50,6 @@ function Sidebar({
   useEffect(() => {
     const loadUsers = async () => {
       const users = await getSearchedFriends(debouncedSearch);
-      console.log(users, search, "used effect");
       setSearchedFriends(users);
     };
     loadUsers();
