@@ -1,8 +1,9 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
-import { getFriends } from "../../providers/api";
+import { getFriends, getSearchedUsers } from "../../providers/api";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import useDebounce from "../../hooks/useDebounce";
 
 function Sidebar({
   currentProfile,
@@ -11,8 +12,11 @@ function Sidebar({
   setNewFriend,
 }) {
   const [friends, setFriends] = useState();
+  const [searchedUsers, setSearchedUsers] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search);
 
   const oldProfile = useRef(null);
   const btnRef = useRef([]);
@@ -43,6 +47,15 @@ function Sidebar({
     oldProfile.current = currentProfile;
   }, [currentProfile]);
 
+  useEffect(() => {
+    const loadUsers = async () => {
+      const users = await getSearchedUsers(debouncedSearch);
+      console.log(users, search, "used effect");
+      setSearchedUsers(users);
+    };
+    loadUsers();
+  }, [debouncedSearch]);
+
   return (
     <>
       <SidebarComp
@@ -56,6 +69,7 @@ function Sidebar({
             <div className="search">
               <button id="search" className="nav-btn"></button>
               <input
+                onChange={(e) => setSearch(e.target.value)}
                 className="search-bar"
                 type="text"
                 placeholder="Search friends or add by ID"
@@ -66,22 +80,75 @@ function Sidebar({
                 <p>No friends found</p>
               ) : isLoading ? (
                 <p>Loading...</p>
+              ) : searchedUsers ? (
+                searchedUsers.map((user) => {
+                  if (user._id === currentProfile) {
+                    return (
+                      <button className="def-btn" key={user._id}>
+                        <Link
+                          ref={(e) => (btnRef.current[user._id] = e)}
+                          onClick={() => setCurrentProfile(user._id)}
+                          className="ch-wrapper focus"
+                          to={`/friends/${user._id}`}
+                        >
+                          <img className="icon-md" src={profile} alt="" />
+                          <h3 className="ch-name">{user.username}</h3>
+                          <div id="view" className="nav-btn"></div>
+                        </Link>
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button className="def-btn" key={user._id}>
+                        <Link
+                          ref={(e) => (btnRef.current[user._id] = e)}
+                          onClick={() => setCurrentProfile(user._id)}
+                          className="ch-wrapper"
+                          to={`/friends/${user._id}`}
+                        >
+                          <img className="icon-md" src={profile} alt="" />
+                          <h3 className="ch-name">{user.username}</h3>
+                          <div id="view" className="nav-btn"></div>
+                        </Link>
+                      </button>
+                    );
+                  }
+                })
               ) : (
                 friends &&
-                friends.map((friend) => (
-                  <button className="def-btn" key={friend._id}>
-                    <Link
-                      ref={(e) => (btnRef.current[friend._id] = e)}
-                      onClick={() => setCurrentProfile(friend._id)}
-                      className="ch-wrapper"
-                      to={`/friends/${friend._id}`}
-                    >
-                      <img className="icon-md" src={profile} alt="" />
-                      <h3 className="ch-name">{friend.username}</h3>
-                      <div id="view" className="nav-btn"></div>
-                    </Link>
-                  </button>
-                ))
+                friends.map((friend) => {
+                  if (friend._id === currentProfile) {
+                    return (
+                      <button className="def-btn" key={friend._id}>
+                        <Link
+                          ref={(e) => (btnRef.current[friend._id] = e)}
+                          onClick={() => setCurrentProfile(friend._id)}
+                          className="ch-wrapper focus"
+                          to={`/friends/${friend._id}`}
+                        >
+                          <img className="icon-md" src={profile} alt="" />
+                          <h3 className="ch-name">{friend.username}</h3>
+                          <div id="view" className="nav-btn"></div>
+                        </Link>
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button className="def-btn" key={friend._id}>
+                        <Link
+                          ref={(e) => (btnRef.current[friend._id] = e)}
+                          onClick={() => setCurrentProfile(friend._id)}
+                          className="ch-wrapper"
+                          to={`/friends/${friend._id}`}
+                        >
+                          <img className="icon-md" src={profile} alt="" />
+                          <h3 className="ch-name">{friend.username}</h3>
+                          <div id="view" className="nav-btn"></div>
+                        </Link>
+                      </button>
+                    );
+                  }
+                })
               )}
             </div>
           </>

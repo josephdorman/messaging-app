@@ -67,6 +67,25 @@ async function getSession() {
   return user;
 }
 
+async function getSearchedUsers(value) {
+  let users = false;
+
+  await api
+    .post("/users/search", {
+      username: value,
+    })
+    .then(function (res) {
+      console.log(res.data);
+      users = res.data;
+    })
+    .catch(function (error) {
+      users = false;
+      console.log(error);
+    });
+
+  return users;
+}
+
 async function getFriends() {
   let friends = false;
 
@@ -219,6 +238,7 @@ export {
   loginUser,
   logoutUser,
   getSession,
+  getSearchedUsers,
   getFriends,
   getFriendProfile,
   getFriendRequests,
