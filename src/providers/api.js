@@ -67,7 +67,7 @@ async function getSession() {
   return user;
 }
 
-async function getSearchedUsers(value) {
+async function getSearchedFriends(value) {
   let users = false;
 
   await api
@@ -237,7 +237,7 @@ export {
   loginUser,
   logoutUser,
   getSession,
-  getSearchedUsers,
+  getSearchedFriends,
   getFriends,
   getFriendProfile,
   getFriendRequests,

@@ -1,6 +1,6 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
-import { getFriends, getSearchedUsers } from "../../providers/api";
+import { getFriends, getSearchedFriends } from "../../providers/api";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import useDebounce from "../../hooks/useDebounce";
@@ -12,7 +12,7 @@ function Sidebar({
   setNewFriend,
 }) {
   const [friends, setFriends] = useState();
-  const [searchedUsers, setSearchedUsers] = useState(null);
+  const [searchedUsers, setSearchedFriends] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [search, setSearch] = useState("");
@@ -49,9 +49,9 @@ function Sidebar({
 
   useEffect(() => {
     const loadUsers = async () => {
-      const users = await getSearchedUsers(debouncedSearch);
+      const users = await getSearchedFriends(debouncedSearch);
       console.log(users, search, "used effect");
-      setSearchedUsers(users);
+      setSearchedFriends(users);
     };
     loadUsers();
   }, [debouncedSearch]);
