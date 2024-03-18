@@ -75,8 +75,7 @@ async function getSearchedUsers(value) {
       username: value,
     })
     .then(function (res) {
-      console.log(res.data);
-      users = res.data;
+      users = res.data.friends;
     })
     .catch(function (error) {
       users = false;
