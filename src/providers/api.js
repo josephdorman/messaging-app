@@ -71,7 +71,7 @@ async function getSearchedUsers(value) {
   let users = false;
 
   await api
-    .post("/users/search", {
+    .post("/friend/search", {
       username: value,
     })
     .then(function (res) {
