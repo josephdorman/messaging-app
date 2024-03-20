@@ -1,12 +1,16 @@
 import { sendFriendRequest } from "../../providers/api";
 import userContext from "../../providers/userContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 function Add() {
+  const [error, setError] = useState(null);
   const { user } = useContext(userContext);
 
   const onClick = (e, id) => {
-    sendFriendRequest(e, id);
+    sendFriendRequest(e, id).then((res) => {
+      console.log(res);
+      setError(res);
+    });
     e.target.form.sendReq.value = "";
   };
 
@@ -27,6 +31,14 @@ function Add() {
             Send Friend Request
           </button>
         </form>
+        <div className="error-wrapper">
+          {error &&
+            error.map((err) => (
+              <p key={err.msg} className="error">
+                * {err.msg}
+              </p>
+            ))}
+        </div>
       </div>
     </>
   );

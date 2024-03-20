@@ -142,6 +142,10 @@
   background-color: var(--grey);
 }
 
+.error-wrapper .error {
+  color: rgb(241, 38, 38);
+}
+
 .focus {
   background-color: var(--grey);
 }

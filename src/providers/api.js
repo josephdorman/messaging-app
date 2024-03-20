@@ -191,6 +191,7 @@ async function removeFriend(id) {
 async function sendFriendRequest(e, id) {
   e.preventDefault();
   const name = e.target.form.sendReq.value;
+  let errors = "";
 
   await api
     .post("/friend/request", {
@@ -202,7 +203,10 @@ async function sendFriendRequest(e, id) {
     })
     .catch(function (error) {
       console.log(error);
+      errors = error.response.data.errors;
     });
+
+  return errors;
 }
 
 async function acceptFriendRequest(id) {
