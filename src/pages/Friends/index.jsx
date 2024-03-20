@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function Index() {
   const [currentProfile, setCurrentProfile] = useState(null);
+  const [currentPage, setCurrentPage] = useState(null);
   const [newFriend, setNewFriend] = useState(false);
 
   return (
@@ -12,10 +13,16 @@ function Index() {
       <Sidebar
         currentProfile={currentProfile}
         setCurrentProfile={setCurrentProfile}
+        setCurrentPage={setCurrentPage}
         newFriend={newFriend}
         setNewFriend={setNewFriend}
       />
-      <Main setCurrentProfile={setCurrentProfile} setNewFriend={setNewFriend} />
+      <Main
+        setCurrentProfile={setCurrentProfile}
+        setNewFriend={setNewFriend}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </>
   );
 }

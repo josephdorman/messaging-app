@@ -8,6 +8,7 @@ import useDebounce from "../../hooks/useDebounce";
 function Sidebar({
   currentProfile,
   setCurrentProfile,
+  setCurrentPage,
   newFriend,
   setNewFriend,
 }) {
@@ -55,6 +56,10 @@ function Sidebar({
     loadUsers();
   }, [debouncedSearch]);
 
+  const unFocusPage = () => {
+    setCurrentPage(null);
+  };
+
   return (
     <>
       <SidebarComp
@@ -83,7 +88,11 @@ function Sidebar({
                 searchedUsers.map((user) => {
                   if (user._id === currentProfile) {
                     return (
-                      <button className="def-btn" key={user._id}>
+                      <button
+                        onClick={unFocusPage}
+                        className="def-btn"
+                        key={user._id}
+                      >
                         <Link
                           ref={(e) => (btnRef.current[user._id] = e)}
                           onClick={() => setCurrentProfile(user._id)}
@@ -98,7 +107,11 @@ function Sidebar({
                     );
                   } else {
                     return (
-                      <button className="def-btn" key={user._id}>
+                      <button
+                        onClick={unFocusPage}
+                        className="def-btn"
+                        key={user._id}
+                      >
                         <Link
                           ref={(e) => (btnRef.current[user._id] = e)}
                           onClick={() => setCurrentProfile(user._id)}
@@ -118,7 +131,11 @@ function Sidebar({
                 friends.map((friend) => {
                   if (friend._id === currentProfile) {
                     return (
-                      <button className="def-btn" key={friend._id}>
+                      <button
+                        onClick={unFocusPage}
+                        className="def-btn"
+                        key={friend._id}
+                      >
                         <Link
                           ref={(e) => (btnRef.current[friend._id] = e)}
                           onClick={() => setCurrentProfile(friend._id)}
@@ -133,7 +150,11 @@ function Sidebar({
                     );
                   } else {
                     return (
-                      <button className="def-btn" key={friend._id}>
+                      <button
+                        onClick={unFocusPage}
+                        className="def-btn"
+                        key={friend._id}
+                      >
                         <Link
                           ref={(e) => (btnRef.current[friend._id] = e)}
                           onClick={() => setCurrentProfile(friend._id)}
