@@ -15,13 +15,13 @@
   margin-inline: 40px;
 }
 
-.nav-friends button {
+.fr-nav {
   position: relative;
   background-color: transparent;
   border: none;
 }
 
-.nav-friends button::before {
+.fr-nav::before {
   content: "";
   position: absolute;
   display: block;
@@ -34,8 +34,12 @@
   transition: transform 0.3s ease;
 }
 
-.nav-friends button:hover::before,
-.nav-friends button:focus::before {
+.fr-nav-focus::before {
+  transform: scaleX(1);
+}
+
+.fr-nav:hover::before,
+.fr-nav:focus::before {
   transform: scaleX(1);
 }
 

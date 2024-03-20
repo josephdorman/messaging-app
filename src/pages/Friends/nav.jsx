@@ -9,7 +9,7 @@ function FriendNav({ setCurrentProfile }) {
   return (
     <>
       <nav className="nav-friends">
-        <button className="chunky">
+        <button className="fr-nav chunky">
           <Link
             onClick={unFocusProfile}
             className="no-dec"
@@ -18,7 +18,7 @@ function FriendNav({ setCurrentProfile }) {
             Online
           </Link>
         </button>
-        <button className="chunky">
+        <button className="fr-nav chunky">
           <Link
             onClick={unFocusProfile}
             className="no-dec"
@@ -27,7 +27,7 @@ function FriendNav({ setCurrentProfile }) {
             Pending
           </Link>
         </button>
-        <button className="chunky">
+        <button className="fr-nav chunky">
           <Link
             onClick={unFocusProfile}
             className="no-dec"
@@ -36,7 +36,7 @@ function FriendNav({ setCurrentProfile }) {
             Blocked
           </Link>
         </button>
-        <button id="add-friend" className="chunky">
+        <button id="add-friend" className="fr-nav chunky">
           <Link onClick={unFocusProfile} className="no-dec" to="/friends/add">
             Add Friend
             <img src={addImg} className="nav-btn" alt="" />
