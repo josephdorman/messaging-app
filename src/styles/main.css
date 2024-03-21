@@ -1,4 +1,7 @@
-.grid-2 {
+.main {
   display: grid;
+}
+
+.grid-2 {
   grid-template-rows: 80px 1fr;
 }
