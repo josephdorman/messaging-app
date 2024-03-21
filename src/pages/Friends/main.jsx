@@ -11,6 +11,7 @@ function Main({
   return (
     <>
       <MainComp
+        grid="grid-2"
         body={
           <>
             <Nav
