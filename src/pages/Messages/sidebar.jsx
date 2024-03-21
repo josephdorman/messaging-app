@@ -1,7 +1,28 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
+import { getChannels } from "../../providers/api";
+import { useEffect, useState } from "react";
 
 function Sidebar() {
+  const [channels, setChannels] = useState(null);
+
+  useEffect(() => {
+    getChannels().then((res) => setChannels(res));
+  }, []);
+
+  const getChannelName = (channel) => {
+    console.log(channel);
+    if ("name" in channel) return channel.name;
+
+    const channelName = channel.users.filter(
+      (user) => user._id !== channels._id
+    );
+
+    console.log(channelName);
+
+    return channelName[0].username;
+  };
+
   return (
     <>
       <SidebarComp
@@ -21,28 +42,23 @@ function Sidebar() {
               />
             </div>
             <div className="list">
-              <button className="ch-wrapper">
-                <img className="icon-md" src={profile} alt="" />
-                <div>
-                  <h3 className="ch-name">Philip Morano</h3>
-                  <p className="last-msg">Are you busy atm?</p>
-                </div>
-                <div className="ch-info">
-                  <p>10:22</p>
-                  <p>(2)</p>
-                </div>
-              </button>
-              <button className="ch-wrapper">
-                <img className="icon-md" src={profile} alt="" />
-                <div>
-                  <h3 className="ch-name">Philip Morano</h3>
-                  <p className="last-msg">Are you busy atm?</p>
-                </div>
-                <div className="ch-info">
-                  <p>10:22</p>
-                  <p>(2)</p>
-                </div>
-              </button>
+              {channels ? (
+                channels.channels.map((channel) => (
+                  <button key={channel._id} className="ch-wrapper">
+                    <img className="icon-md" src={profile} alt="" />
+                    <div>
+                      <h3 className="ch-name">{getChannelName(channel)}</h3>
+                      <p className="last-msg">{channel._id}</p>
+                    </div>
+                    <div className="ch-info">
+                      <p>10:22</p>
+                      <p>(2)</p>
+                    </div>
+                  </button>
+                ))
+              ) : (
+                <div>No Channels</div>
+              )}
               <button className="ch-wrapper">
                 <img className="icon-md" src={profile} alt="" />
                 <div>

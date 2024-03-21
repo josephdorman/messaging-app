@@ -149,6 +149,22 @@ async function getBlocked() {
   return blocked;
 }
 
+async function getChannels() {
+  let channels = false;
+
+  await api
+    .get("/users/channels")
+    .then(function (res) {
+      channels = res.data;
+    })
+    .catch(function (err) {
+      channels = false;
+      console.log(err);
+    });
+
+  return channels;
+}
+
 async function blockUser(id) {
   await api
     .post("/user/block", {
@@ -246,6 +262,7 @@ export {
   getFriendProfile,
   getFriendRequests,
   getBlocked,
+  getChannels,
   blockUser,
   unblockUser,
   removeFriend,
