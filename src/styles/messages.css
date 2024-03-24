@@ -1,0 +1,61 @@
+.ch.user.channel-header {
+  background-color: var(--dark-grey);
+}
+
+.send-msg-wrapper {
+  background-color: var(--dark-grey);
+}
+.channel-header {
+  padding-inline: var(--pad-inline);
+}
+
+.ch-chat {
+  padding-inline: var(--pad-inline);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.msg-wrapper {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-rows: auto auto;
+}
+
+.msg-user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.msg-user p {
+  color: var(--light-grey);
+}
+
+.msg-body {
+  grid-column: 2 / 3;
+}
+
+.send-msg-wrapper {
+  display: flex;
+  align-items: center;
+  padding-inline: var(--pad-inline);
+}
+
+.send-msg-wrapper input {
+  flex: 1;
+  color: white;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding-block: 8px;
+  font-size: var(--fs-14);
+  border-bottom: 1px solid white;
+  margin-right: 24px;
+}
+
+nav.send-msg-nav {
+  display: flex;
+  align-self: center;
+  gap: 10px;
+}
