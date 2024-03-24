@@ -11,14 +11,11 @@ function Sidebar() {
   }, []);
 
   const getChannelName = (channel) => {
-    console.log(channel);
     if ("name" in channel) return channel.name;
 
     const channelName = channel.users.filter(
       (user) => user._id !== channels._id
     );
-
-    console.log(channelName);
 
     return channelName[0].username;
   };
