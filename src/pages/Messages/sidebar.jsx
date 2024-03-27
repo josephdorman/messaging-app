@@ -2,15 +2,16 @@ import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
 import { getChannels } from "../../providers/api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ currentChannel, setCurrentChannel }) {
   const [channels, setChannels] = useState(null);
 
   useEffect(() => {
     getChannels().then((res) => setChannels(res));
   }, []);
 
-  const getChannelName = (channel) => {
+  function getChannelName(channel) {
     if ("name" in channel) return channel.name;
 
     const channelName = channel.users.filter(
@@ -18,7 +19,7 @@ function Sidebar() {
     );
 
     return channelName[0].username;
-  };
+  }
 
   return (
     <>
@@ -41,16 +42,25 @@ function Sidebar() {
             <div className="list">
               {channels ? (
                 channels.channels.map((channel) => (
-                  <button key={channel._id} className="ch-wrapper">
-                    <img className="icon-md" src={profile} alt="" />
-                    <div>
-                      <h3 className="ch-name">{getChannelName(channel)}</h3>
-                      <p className="last-msg">{channel._id}</p>
-                    </div>
-                    <div className="ch-info">
-                      <p>10:22</p>
-                      <p>(2)</p>
-                    </div>
+                  <button
+                    key={channel._id}
+                    onClick={() => setCurrentChannel(channel._id)}
+                    className="def-btn"
+                  >
+                    <Link
+                      className="ch-wrapper"
+                      to={`/messages/${channel._id}`}
+                    >
+                      <img className="icon-md" src={profile} alt="" />
+                      <div>
+                        <h3 className="ch-name">{getChannelName(channel)}</h3>
+                        <p className="last-msg">{channel._id}</p>
+                      </div>
+                      <div className="ch-info">
+                        <p>10:22</p>
+                        <p>(2)</p>
+                      </div>
+                    </Link>
                   </button>
                 ))
               ) : (

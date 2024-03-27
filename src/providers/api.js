@@ -165,6 +165,37 @@ async function getChannels() {
   return channels;
 }
 
+async function getMessages(channelId) {
+  let messages = false;
+
+  await api
+    .get(`/channel/${channelId}/messages`)
+    .then(function (res) {
+      console.log(res);
+      messages = res.data;
+    })
+    .catch(function (err) {
+      messages = false;
+      console.log(err);
+    });
+
+  return messages;
+}
+
+async function sendMessage(message, channelId) {
+  await api
+    .post(`/message/create`, {
+      message: message,
+      channelId: channelId,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 async function blockUser(id) {
   await api
     .post("/user/block", {
@@ -263,6 +294,8 @@ export {
   getFriendRequests,
   getBlocked,
   getChannels,
+  getMessages,
+  sendMessage,
   blockUser,
   unblockUser,
   removeFriend,

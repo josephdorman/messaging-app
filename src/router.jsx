@@ -16,6 +16,7 @@ import FriendsProfile from "./pages/Friends/profile";
 import Add from "./pages/Friends/add";
 import Pending from "./pages/Friends/pending";
 import Blocked from "./pages/Friends/blocked";
+import Channel from "./pages/Messages/main";
 
 function Router() {
   const [user, setUser] = useState(null);
@@ -36,6 +37,13 @@ function Router() {
         {
           path: "messages",
           element: <Messages />,
+          children: [
+            {
+              path: ":id",
+              element: <Messages />,
+              errorElement: <ErrorPage />,
+            },
+          ],
           errorElement: <ErrorPage />,
         },
         {
