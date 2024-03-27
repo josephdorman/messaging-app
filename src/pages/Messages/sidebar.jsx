@@ -1,14 +1,19 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
 import { getChannels } from "../../providers/api";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import SocketContext from "../../providers/socketContext";
 import { Link } from "react-router-dom";
 
 function Sidebar({ currentChannel, setCurrentChannel }) {
+  const { socket } = useContext(SocketContext);
   const [channels, setChannels] = useState(null);
 
   useEffect(() => {
-    getChannels().then((res) => setChannels(res));
+    getChannels().then((res) => {
+      socket.emit("join_channels", res.channels);
+      setChannels(res);
+    });
   }, []);
 
   function getChannelName(channel) {
