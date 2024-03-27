@@ -89,7 +89,7 @@ function Main({ setCurrentChannel, currentChannel }) {
                     ref={inputRef}
                     onKeyDown={(e) => {
                       if (e.key === "Enter")
-                        onEnter(e.target.value, currentChannel._id);
+                        onEnter(e.target.value, currentChannel);
                     }}
                     type="text"
                     id="sendMsg"

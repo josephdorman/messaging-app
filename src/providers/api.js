@@ -171,7 +171,6 @@ async function getMessages(channelId) {
   await api
     .get(`/channel/${channelId}/messages`)
     .then(function (res) {
-      console.log(res);
       messages = res.data;
     })
     .catch(function (err) {
