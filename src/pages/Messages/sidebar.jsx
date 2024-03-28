@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 function Sidebar({ currentChannel, setCurrentChannel }) {
   const { socket } = useContext(SocketContext);
   const [channels, setChannels] = useState(null);
+  const [lastMessage, setLastMessage] = useState(null);
 
   useEffect(() => {
     getChannels().then((res) => {
@@ -15,6 +16,12 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
       setChannels(res);
     });
   }, []);
+
+  useEffect(() => {
+    socket.on("receive_last_message", (data) => {
+      setLastMessage(data);
+    });
+  }, [socket]);
 
   function getChannelName(channel) {
     if ("name" in channel) return channel.name;
@@ -26,15 +33,22 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     return channelName[0].username;
   }
 
-  const getLastMessage = (channel) => {
-    if ("lastMessage" in channel) {
-      if (channel.lastMessage.body.length > 20) {
-        return `${channel.lastMessage.body.substring(0, 31)} ...`;
+  const getLastMessage = (channel, msg) => {
+    if (msg && msg.channel === channel._id) {
+      if (msg.body.length > 30) {
+        return `${msg.body.substring(0, 31)} ...`;
       }
-      return channel.lastMessage.body;
+      return msg.body;
+    } else {
+      if ("lastMessage" in channel) {
+        if (channel.lastMessage.body.length > 30) {
+          return `${channel.lastMessage.body.substring(0, 31)} ...`;
+        }
+        return channel.lastMessage.body;
+      } else {
+        return "No messages exist";
+      }
     }
-
-    return "No messages exist";
   };
 
   return (
@@ -69,7 +83,9 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                     >
                       <img className="icon-md ch-icon" src={profile} alt="" />
                       <h3 className="ch-name">{getChannelName(channel)}</h3>
-                      <p className="last-msg">{getLastMessage(channel)}</p>
+                      <p className="last-msg">
+                        {getLastMessage(channel, lastMessage)}
+                      </p>
                       <p>10:22 PM</p>
                     </Link>
                   </button>
