@@ -1,12 +1,10 @@
 .ch.user.channel-header {
   background-color: var(--dark-grey);
+  padding-inline: var(--pad-inline);
 }
 
 .send-msg-wrapper {
   background-color: var(--dark-grey);
-}
-.channel-header {
-  padding-inline: var(--pad-inline);
 }
 
 .ch-chat {
@@ -15,13 +13,18 @@
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .msg-wrapper {
   display: grid;
   grid-template-columns: 50px auto;
   grid-template-rows: auto auto;
+}
+
+.msg-wrapper img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
 }
 
 .msg-user {
