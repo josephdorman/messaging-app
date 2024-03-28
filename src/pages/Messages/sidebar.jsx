@@ -26,6 +26,17 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     return channelName[0].username;
   }
 
+  const getLastMessage = (channel) => {
+    if ("lastMessage" in channel) {
+      if (channel.lastMessage.body.length > 20) {
+        return `${channel.lastMessage.body.substring(0, 31)} ...`;
+      }
+      return channel.lastMessage.body;
+    }
+
+    return "No messages exist";
+  };
+
   return (
     <>
       <SidebarComp
@@ -56,15 +67,10 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                       className="ch-wrapper"
                       to={`/messages/${channel._id}`}
                     >
-                      <img className="icon-md" src={profile} alt="" />
-                      <div>
-                        <h3 className="ch-name">{getChannelName(channel)}</h3>
-                        <p className="last-msg">{channel._id}</p>
-                      </div>
-                      <div className="ch-info">
-                        <p>10:22</p>
-                        <p>(2)</p>
-                      </div>
+                      <img className="icon-md ch-icon" src={profile} alt="" />
+                      <h3 className="ch-name">{getChannelName(channel)}</h3>
+                      <p className="last-msg">{getLastMessage(channel)}</p>
+                      <p>10:22 PM</p>
                     </Link>
                   </button>
                 ))

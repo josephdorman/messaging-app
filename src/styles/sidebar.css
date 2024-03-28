@@ -64,16 +64,26 @@
   background-color: transparent;
   align-items: center;
   border: none;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 50px 1fr auto;
+  grid-template-rows: 1fr 1fr;
   text-align: start;
   padding: 7px 12px;
   border-radius: 10px;
-  gap: 15px;
 }
 
 .ch-wrapper:hover,
 .ch-wrapper:focus {
   background-color: var(--grey);
+}
+
+.ch-icon {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.last-msg {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
 }
 
 .ch {
@@ -87,14 +97,14 @@
   font-size: var(--fs-16);
 }
 
+.ch-name-fr {
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+
 .last-msg,
 .status {
   font-size: var(--fs-14);
-}
-
-.ch-info {
-  font-size: var(--fs-14);
-  text-align: right;
 }
 
 .ch.user {

@@ -99,8 +99,14 @@ function Sidebar({
                           className="ch-wrapper focus"
                           to={`/friends/${user._id}`}
                         >
-                          <img className="icon-md" src={profile} alt="" />
-                          <h3 className="ch-name">{user.username}</h3>
+                          <img
+                            className="icon-md ch-icon"
+                            src={profile}
+                            alt=""
+                          />
+                          <h3 className="ch-name ch-name-fr">
+                            {user.username}
+                          </h3>
                           <div id="view" className="nav-btn"></div>
                         </Link>
                       </button>
@@ -118,8 +124,14 @@ function Sidebar({
                           className="ch-wrapper"
                           to={`/friends/${user._id}`}
                         >
-                          <img className="icon-md" src={profile} alt="" />
-                          <h3 className="ch-name">{user.username}</h3>
+                          <img
+                            className="icon-md ch-icon"
+                            src={profile}
+                            alt=""
+                          />
+                          <h3 className="ch-name ch-name-fr">
+                            {user.username}
+                          </h3>
                           <div id="view" className="nav-btn"></div>
                         </Link>
                       </button>
