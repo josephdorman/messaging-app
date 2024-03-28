@@ -77,9 +77,12 @@ function Main({ setCurrentChannel, currentChannel }) {
               <>
                 <div className="ch user channel-header">
                   <img className="icon-lg" src={profile} alt=""></img>
-                  <div>
+                  <div className="">
                     <h3>{getChannelName(channel)}</h3>
-                    <p>Channel Users</p>
+                    <p>
+                      This is the global chat room, talk to anybody and
+                      everybody
+                    </p>
                   </div>
                 </div>
                 <div className="ch-chat" ref={chatRef} onLoad={resetScroll}>
