@@ -3,16 +3,19 @@ import MainComp from "../../components/main";
 import { getMessages, sendMessage } from "../../providers/api";
 import { useState, useEffect, useContext, useRef } from "react";
 import { useMatch } from "react-router-dom";
+import SocketContext from "../../providers/socketContext";
 import UserContext from "../../providers/userContext";
 
 function Main({ setCurrentChannel, currentChannel }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [channel, setChannel] = useState(null);
+  const { socket } = useContext(SocketContext);
   const { user } = useContext(UserContext);
   const match = useMatch("/messages/:channelId");
 
   const inputRef = useRef(null);
+  const chatRef = useRef();
 
   useEffect(() => {
     if (!match) {
@@ -33,6 +36,12 @@ function Main({ setCurrentChannel, currentChannel }) {
     });
   }, [match]);
 
+  useEffect(() => {
+    socket.on("receive_message", (channel) => {
+      setChannel(channel);
+    });
+  }, [socket]);
+
   function getChannelName(channel) {
     if ("name" in channel) return channel.name;
 
@@ -45,7 +54,14 @@ function Main({ setCurrentChannel, currentChannel }) {
 
   const onEnter = (msg, id) => {
     sendMessage(msg, id);
+    socket.emit("send_message", msg, channel, user);
     inputRef.current.value = "";
+  };
+
+  const resetScroll = () => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
   };
 
   return (
@@ -66,7 +82,7 @@ function Main({ setCurrentChannel, currentChannel }) {
                     <p>Channel Users</p>
                   </div>
                 </div>
-                <div className="ch-chat">
+                <div className="ch-chat" ref={chatRef} onLoad={resetScroll}>
                   {channel.messages.length > 0 ? (
                     channel.messages.map((msg) => (
                       <div key={msg._id} className="msg-wrapper">

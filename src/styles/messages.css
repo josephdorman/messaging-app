@@ -10,10 +10,12 @@
 }
 
 .ch-chat {
-  padding-inline: var(--pad-inline);
+  padding: 10px var(--pad-inline);
+  height: calc(100vh - var(--gr-first) - var(--gr-last));
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 10px;
 }
 
 .msg-wrapper {
