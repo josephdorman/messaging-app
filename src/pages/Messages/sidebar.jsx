@@ -71,25 +71,57 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
             </div>
             <div className="list">
               {channels ? (
-                channels.channels.map((channel) => (
-                  <button
-                    key={channel._id}
-                    onClick={() => setCurrentChannel(channel._id)}
-                    className="def-btn"
-                  >
-                    <Link
-                      className="ch-wrapper"
-                      to={`/messages/${channel._id}`}
-                    >
-                      <img className="icon-md ch-icon" src={profile} alt="" />
-                      <h3 className="ch-name">{getChannelName(channel)}</h3>
-                      <p className="last-msg">
-                        {getLastMessage(channel, lastMessage)}
-                      </p>
-                      <p>10:22 PM</p>
-                    </Link>
-                  </button>
-                ))
+                channels.channels.map((channel) => {
+                  if (channel._id === currentChannel) {
+                    return (
+                      <button
+                        key={channel._id}
+                        onClick={() => setCurrentChannel(channel._id)}
+                        className="def-btn"
+                      >
+                        <Link
+                          className="ch-wrapper focus"
+                          to={`/messages/${channel._id}`}
+                        >
+                          <img
+                            className="icon-md ch-icon"
+                            src={profile}
+                            alt=""
+                          />
+                          <h3 className="ch-name">{getChannelName(channel)}</h3>
+                          <p className="last-msg">
+                            {getLastMessage(channel, lastMessage)}
+                          </p>
+                          <p>10:22 PM</p>
+                        </Link>
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button
+                        key={channel._id}
+                        onClick={() => setCurrentChannel(channel._id)}
+                        className="def-btn"
+                      >
+                        <Link
+                          className="ch-wrapper"
+                          to={`/messages/${channel._id}`}
+                        >
+                          <img
+                            className="icon-md ch-icon"
+                            src={profile}
+                            alt=""
+                          />
+                          <h3 className="ch-name">{getChannelName(channel)}</h3>
+                          <p className="last-msg">
+                            {getLastMessage(channel, lastMessage)}
+                          </p>
+                          <p>10:22 PM</p>
+                        </Link>
+                      </button>
+                    );
+                  }
+                })
               ) : (
                 <div>No Channels</div>
               )}
