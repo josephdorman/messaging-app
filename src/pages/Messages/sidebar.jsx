@@ -4,6 +4,7 @@ import { getChannels, getSearchedChannels } from "../../providers/api";
 import { useEffect, useState, useContext } from "react";
 import SocketContext from "../../providers/socketContext";
 import useDebounce from "../../hooks/useDebounce";
+import useDateFormat from "../../hooks/useDateFormat";
 import { Link } from "react-router-dom";
 
 function Sidebar({ currentChannel, setCurrentChannel }) {
@@ -63,6 +64,14 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     }
   };
 
+  const getTimeStamp = (channel, msg) => {
+    if (msg && msg.channel === channel._id) {
+      return useDateFormat(msg.date);
+    } else if ("lastMessage" in channel) {
+      return useDateFormat(channel.lastMessage.date);
+    }
+  };
+
   return (
     <>
       <SidebarComp
@@ -107,7 +116,7 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                             <p className="last-msg">
                               {getLastMessage(channel, lastMessage)}
                             </p>
-                            <p>10:22 PM</p>
+                            <p>{getTimeStamp(channel, lastMessage)}</p>
                           </Link>
                         </button>
                       );
@@ -133,7 +142,7 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                             <p className="last-msg">
                               {getLastMessage(channel, lastMessage)}
                             </p>
-                            <p>10:22 PM</p>
+                            <p>{getTimeStamp(channel, lastMessage)}</p>
                           </Link>
                         </button>
                       );
@@ -163,7 +172,7 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                             <p className="last-msg">
                               {getLastMessage(channel, lastMessage)}
                             </p>
-                            <p>10:22 PM</p>
+                            <p>{getTimeStamp(channel, lastMessage)}</p>
                           </Link>
                         </button>
                       );
@@ -189,7 +198,7 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                             <p className="last-msg">
                               {getLastMessage(channel, lastMessage)}
                             </p>
-                            <p>10:22 PM</p>
+                            <p>{getTimeStamp(channel, lastMessage)}</p>
                           </Link>
                         </button>
                       );

@@ -5,6 +5,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { useMatch } from "react-router-dom";
 import SocketContext from "../../providers/socketContext";
 import UserContext from "../../providers/userContext";
+import useDateFormat from "../../hooks/useDateFormat";
 
 function Main({ setCurrentChannel, currentChannel }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +42,22 @@ function Main({ setCurrentChannel, currentChannel }) {
       setChannel(channel);
     });
   }, [socket]);
+
+  const proccessDate = (date) => {
+    const msgDate = DateTime.fromISO(date).toLocaleString();
+    const timeStamp = DateTime.fromISO(date).toLocaleString(
+      DateTime.TIME_SIMPLE
+    );
+
+    if (DateTime.fromISO(date).day === DateTime.now().day) {
+      return `Today at ${timeStamp}`;
+    } else if (
+      DateTime.fromISO(date).day === DateTime.now().minus({ day: 1 }).day
+    ) {
+      return `Yesterday at ${timeStamp}`;
+    }
+    return `${msgDate} ${timeStamp}`;
+  };
 
   function getChannelName(channel) {
     if ("main" in channel.channelName) return channel.channelName.main;
@@ -92,7 +109,7 @@ function Main({ setCurrentChannel, currentChannel }) {
                         <img className="icon-md" src={profile} alt="" />
                         <div className="msg-user">
                           <h4>{msg.user.username}</h4>
-                          <p className="chunky">10:22 PM</p>
+                          <p className="chunky">{useDateFormat(msg.date)}</p>
                         </div>
                         <p className="msg-body">{msg.body}</p>
                       </div>
