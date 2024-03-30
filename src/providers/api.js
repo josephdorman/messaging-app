@@ -165,6 +165,24 @@ async function getChannels() {
   return channels;
 }
 
+async function getSearchedChannels(value) {
+  let channels = false;
+
+  await api
+    .post("/channel/search", {
+      channel: value,
+    })
+    .then(function (res) {
+      channels = res.data.channels;
+    })
+    .catch(function (error) {
+      channels = false;
+      console.log(error);
+    });
+
+  return channels;
+}
+
 async function getMessages(channelId) {
   let messages = false;
 
@@ -293,6 +311,7 @@ export {
   getFriendRequests,
   getBlocked,
   getChannels,
+  getSearchedChannels,
   getMessages,
   sendMessage,
   blockUser,

@@ -1,14 +1,18 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
-import { getChannels } from "../../providers/api";
+import { getChannels, getSearchedChannels } from "../../providers/api";
 import { useEffect, useState, useContext } from "react";
 import SocketContext from "../../providers/socketContext";
+import useDebounce from "../../hooks/useDebounce";
 import { Link } from "react-router-dom";
 
 function Sidebar({ currentChannel, setCurrentChannel }) {
   const { socket } = useContext(SocketContext);
   const [channels, setChannels] = useState(null);
+  const [search, setSearch] = useState(null);
+  const [searchedChannels, setSearchedChannels] = useState(null);
   const [lastMessage, setLastMessage] = useState(null);
+  const debouncedSearch = useDebounce(search);
 
   useEffect(() => {
     getChannels().then((res) => {
@@ -23,8 +27,16 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     });
   }, [socket]);
 
+  useEffect(() => {
+    const loadChannels = async () => {
+      const channelsSearched = await getSearchedChannels(debouncedSearch);
+      setSearchedChannels(channelsSearched);
+    };
+    loadChannels();
+  }, [debouncedSearch]);
+
   function getChannelName(channel) {
-    if ("name" in channel) return channel.name;
+    if ("main" in channel.channelName) return channel.channelName.main;
 
     const channelName = channel.users.filter(
       (user) => user._id !== channels._id
@@ -64,67 +76,125 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
             <div className="search">
               <button id="search" className="nav-btn"></button>
               <input
+                onChange={(e) => setSearch(e.target.value)}
                 className="search-bar"
                 type="text"
                 placeholder="Search People, Groups, Messages"
               />
             </div>
             <div className="list">
-              {channels ? (
-                channels.channels.map((channel) => {
-                  if (channel._id === currentChannel) {
-                    return (
-                      <button
-                        key={channel._id}
-                        onClick={() => setCurrentChannel(channel._id)}
-                        className="def-btn"
-                      >
-                        <Link
-                          className="ch-wrapper focus"
-                          to={`/messages/${channel._id}`}
+              {searchedChannels
+                ? searchedChannels.map((channel) => {
+                    if (channel._id === currentChannel) {
+                      return (
+                        <button
+                          key={channel._id}
+                          onClick={() => setCurrentChannel(channel._id)}
+                          className="def-btn"
                         >
-                          <img
-                            className="icon-md ch-icon"
-                            src={profile}
-                            alt=""
-                          />
-                          <h3 className="ch-name">{getChannelName(channel)}</h3>
-                          <p className="last-msg">
-                            {getLastMessage(channel, lastMessage)}
-                          </p>
-                          <p>10:22 PM</p>
-                        </Link>
-                      </button>
-                    );
-                  } else {
-                    return (
-                      <button
-                        key={channel._id}
-                        onClick={() => setCurrentChannel(channel._id)}
-                        className="def-btn"
-                      >
-                        <Link
-                          className="ch-wrapper"
-                          to={`/messages/${channel._id}`}
+                          <Link
+                            className="ch-wrapper focus"
+                            to={`/messages/${channel._id}`}
+                          >
+                            <img
+                              className="icon-md ch-icon"
+                              src={profile}
+                              alt=""
+                            />
+                            <h3 className="ch-name">
+                              {getChannelName(channel)}
+                            </h3>
+                            <p className="last-msg">
+                              {getLastMessage(channel, lastMessage)}
+                            </p>
+                            <p>10:22 PM</p>
+                          </Link>
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <button
+                          key={channel._id}
+                          onClick={() => setCurrentChannel(channel._id)}
+                          className="def-btn"
                         >
-                          <img
-                            className="icon-md ch-icon"
-                            src={profile}
-                            alt=""
-                          />
-                          <h3 className="ch-name">{getChannelName(channel)}</h3>
-                          <p className="last-msg">
-                            {getLastMessage(channel, lastMessage)}
-                          </p>
-                          <p>10:22 PM</p>
-                        </Link>
-                      </button>
-                    );
-                  }
-                })
-              ) : (
-                <div>No Channels</div>
-              )}
+                          <Link
+                            className="ch-wrapper"
+                            to={`/messages/${channel._id}`}
+                          >
+                            <img
+                              className="icon-md ch-icon"
+                              src={profile}
+                              alt=""
+                            />
+                            <h3 className="ch-name">
+                              {getChannelName(channel)}
+                            </h3>
+                            <p className="last-msg">
+                              {getLastMessage(channel, lastMessage)}
+                            </p>
+                            <p>10:22 PM</p>
+                          </Link>
+                        </button>
+                      );
+                    }
+                  })
+                : channels &&
+                  channels.channels.map((channel) => {
+                    if (channel._id === currentChannel) {
+                      return (
+                        <button
+                          key={channel._id}
+                          onClick={() => setCurrentChannel(channel._id)}
+                          className="def-btn"
+                        >
+                          <Link
+                            className="ch-wrapper focus"
+                            to={`/messages/${channel._id}`}
+                          >
+                            <img
+                              className="icon-md ch-icon"
+                              src={profile}
+                              alt=""
+                            />
+                            <h3 className="ch-name">
+                              {getChannelName(channel)}
+                            </h3>
+                            <p className="last-msg">
+                              {getLastMessage(channel, lastMessage)}
+                            </p>
+                            <p>10:22 PM</p>
+                          </Link>
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <button
+                          key={channel._id}
+                          onClick={() => setCurrentChannel(channel._id)}
+                          className="def-btn"
+                        >
+                          <Link
+                            className="ch-wrapper"
+                            to={`/messages/${channel._id}`}
+                          >
+                            <img
+                              className="icon-md ch-icon"
+                              src={profile}
+                              alt=""
+                            />
+                            <h3 className="ch-name">
+                              {getChannelName(channel)}
+                            </h3>
+                            <p className="last-msg">
+                              {getLastMessage(channel, lastMessage)}
+                            </p>
+                            <p>10:22 PM</p>
+                          </Link>
+                        </button>
+                      );
+                    }
+                  })}
             </div>
           </>
         }
