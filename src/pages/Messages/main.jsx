@@ -43,7 +43,7 @@ function Main({ setCurrentChannel, currentChannel }) {
   }, [socket]);
 
   function getChannelName(channel) {
-    if ("name" in channel) return channel.name;
+    if ("main" in channel.channelName) return channel.channelName.main;
 
     const channelName = channel.users.filter(
       (channelUser) => channelUser._id !== user._id
