@@ -64,3 +64,12 @@ nav.send-msg-nav {
   align-self: center;
   gap: 10px;
 }
+
+.ch-create {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#add {
+  background-image: url(../assets/addLinear.svg);
+}

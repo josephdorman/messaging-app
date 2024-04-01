@@ -92,6 +92,10 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
               />
             </div>
             <div className="list">
+              <button className="ch-wrapper ch-create">
+                <div id="add" className="nav-btn"></div>
+                <h3>Create a new group</h3>
+              </button>
               {searchedChannels
                 ? searchedChannels.map((channel) => {
                     if (channel._id === currentChannel) {
