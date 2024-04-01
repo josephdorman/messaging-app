@@ -13,6 +13,7 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
   const [search, setSearch] = useState(null);
   const [searchedChannels, setSearchedChannels] = useState(null);
   const [lastMessage, setLastMessage] = useState(null);
+  const [toggleForm, setToggleForm] = useState(false);
   const debouncedSearch = useDebounce(search);
 
   useEffect(() => {
@@ -72,6 +73,14 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     }
   };
 
+  const onToggle = () => {
+    if (toggleForm) {
+      setToggleForm(false);
+    } else {
+      setToggleForm(true);
+    }
+  };
+
   return (
     <>
       <SidebarComp
@@ -92,10 +101,22 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
               />
             </div>
             <div className="list">
-              <button className="ch-wrapper ch-create">
-                <div id="add" className="nav-btn"></div>
-                <h3>Create a new group</h3>
-              </button>
+              {toggleForm ? (
+                <form className="channel-create">
+                  <input
+                    type="text"
+                    name="create-channel"
+                    id="create-channel"
+                    placeholder="Enter channel name"
+                  />
+                  <button id="ch-create">Create</button>
+                </form>
+              ) : (
+                <button onClick={onToggle} className="ch-wrapper ch-create">
+                  <div id="add" className="nav-btn"></div>
+                  <h3>Create a new group</h3>
+                </button>
+              )}
               {searchedChannels
                 ? searchedChannels.map((channel) => {
                     if (channel._id === currentChannel) {

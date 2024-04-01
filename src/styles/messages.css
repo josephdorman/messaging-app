@@ -67,7 +67,38 @@ nav.send-msg-nav {
 
 .ch-create {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+.channel-create {
+  display: flex;
+  background-color: var(--grey);
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.channel-create input {
+  border: none;
+  outline: none;
+  background-color: var(--grey);
+  font-size: var(--fs-15);
+  padding-inline: 5px;
+}
+
+.channel-create button {
+  background-color: whitesmoke;
+  color: var(--black);
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 8px;
+}
+
+.channel-create button:hover {
+  color: whitesmoke;
+  background-color: var(--dark-grey);
 }
 
 #add {
