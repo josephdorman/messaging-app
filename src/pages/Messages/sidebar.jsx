@@ -1,6 +1,10 @@
 import SidebarComp from "../../components/sidebar";
 import profile from "../../assets/profileIcon.svg";
-import { getChannels, getSearchedChannels } from "../../providers/api";
+import {
+  getChannels,
+  getSearchedChannels,
+  createChannel,
+} from "../../providers/api";
 import { useEffect, useState, useContext } from "react";
 import SocketContext from "../../providers/socketContext";
 import useDebounce from "../../hooks/useDebounce";
@@ -14,6 +18,7 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
   const [searchedChannels, setSearchedChannels] = useState(null);
   const [lastMessage, setLastMessage] = useState(null);
   const [toggleForm, setToggleForm] = useState(false);
+  const [isError, setIsError] = useState(false);
   const debouncedSearch = useDebounce(search);
 
   useEffect(() => {
@@ -73,6 +78,21 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     }
   };
 
+  const onSubmit = (e) => {
+    createChannel(e).then((res) => {
+      if (res) {
+        console.log(res.data.errors);
+      } else {
+        e.target.form.createChannel.value = "";
+        setToggleForm(false);
+        getChannels().then((res) => {
+          socket.emit("join_channels", res.channels);
+          setChannels(res);
+        });
+      }
+    });
+  };
+
   const onToggle = () => {
     if (toggleForm) {
       setToggleForm(false);
@@ -105,11 +125,13 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
                 <form className="channel-create">
                   <input
                     type="text"
-                    name="create-channel"
-                    id="create-channel"
+                    name="createChannel"
+                    id="createChannel"
                     placeholder="Enter channel name"
                   />
-                  <button id="ch-create">Create</button>
+                  <button onClick={(e) => onSubmit(e)} id="ch-create">
+                    Create
+                  </button>
                 </form>
               ) : (
                 <button onClick={onToggle} className="ch-wrapper ch-create">

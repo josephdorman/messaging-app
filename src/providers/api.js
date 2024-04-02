@@ -21,6 +21,25 @@ function createUser(e) {
     });
 }
 
+async function createChannel(e) {
+  console.log(e.target.form.createChannel.value, "channel name");
+  let errors = false;
+
+  e.preventDefault();
+  await api
+    .post("/channel/create", {
+      channelName: e.target.form.createChannel.value,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      errors = error.response;
+    });
+
+  return errors;
+}
+
 async function loginUser(e) {
   e.preventDefault();
   return api
@@ -302,6 +321,7 @@ async function cancelFriendRequest(id, type) {
 
 export {
   createUser,
+  createChannel,
   loginUser,
   logoutUser,
   getSession,
