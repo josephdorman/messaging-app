@@ -25,6 +25,7 @@ function Main({ setCurrentChannel, currentChannel }) {
     }
 
     getMessages(match.params.channelId).then((res) => {
+      console.log(res);
       setChannel(res);
 
       if (res !== false) {
@@ -42,22 +43,6 @@ function Main({ setCurrentChannel, currentChannel }) {
       setChannel(channel);
     });
   }, [socket]);
-
-  const proccessDate = (date) => {
-    const msgDate = DateTime.fromISO(date).toLocaleString();
-    const timeStamp = DateTime.fromISO(date).toLocaleString(
-      DateTime.TIME_SIMPLE
-    );
-
-    if (DateTime.fromISO(date).day === DateTime.now().day) {
-      return `Today at ${timeStamp}`;
-    } else if (
-      DateTime.fromISO(date).day === DateTime.now().minus({ day: 1 }).day
-    ) {
-      return `Yesterday at ${timeStamp}`;
-    }
-    return `${msgDate} ${timeStamp}`;
-  };
 
   function getChannelName(channel) {
     if ("main" in channel.channelName) return channel.channelName.main;
@@ -101,6 +86,7 @@ function Main({ setCurrentChannel, currentChannel }) {
                       everybody
                     </p>
                   </div>
+                  {channel.owner && <button id="manage">Manage</button>}
                 </div>
                 <div className="ch-chat" ref={chatRef} onLoad={resetScroll}>
                   {channel.messages.length > 0 ? (

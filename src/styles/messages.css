@@ -13,7 +13,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  /*justify-content: end;*/
   gap: 15px;
 }
 
@@ -88,7 +88,8 @@ nav.send-msg-nav {
   padding-inline: 5px;
 }
 
-.channel-create button {
+.channel-create button,
+#manage {
   background-color: whitesmoke;
   color: var(--black);
   font-weight: 600;
@@ -97,7 +98,8 @@ nav.send-msg-nav {
   padding: 5px 8px;
 }
 
-.channel-create button:hover {
+.channel-create button:hover,
+#manage:hover {
   color: whitesmoke;
   background-color: var(--dark-grey);
 }
