@@ -7,7 +7,12 @@
   background-color: var(--dark-grey);
 }
 
+.channel-view {
+  display: flex;
+}
+
 .ch-chat {
+  flex: 1;
   padding: 10px var(--pad-inline);
   height: calc(100vh - var(--gr-first) - var(--gr-last));
 
@@ -15,6 +20,23 @@
   flex-direction: column;
   /*justify-content: end;*/
   gap: 15px;
+}
+
+.ch-chat-sidebar {
+  background-color: var(--dark-grey);
+  padding: 10px 20px;
+}
+
+.ch-chat-sb-title {
+  font-size: var(--fs-14);
+  color: var(--light-grey);
+}
+
+.search.friend-add.ch-chat-sb,
+.search-bar.ch-chat-sb {
+  margin-block: 5px;
+  padding-block: 3px;
+  background-color: var(--grey);
 }
 
 .msg-wrapper {
@@ -88,8 +110,7 @@ nav.send-msg-nav {
   padding-inline: 5px;
 }
 
-.channel-create button,
-#manage {
+.channel-create button {
   background-color: whitesmoke;
   color: var(--black);
   font-weight: 600;
@@ -98,12 +119,39 @@ nav.send-msg-nav {
   padding: 5px 8px;
 }
 
-.channel-create button:hover,
-#manage:hover {
+.channel-create button:hover {
   color: whitesmoke;
   background-color: var(--dark-grey);
 }
 
+#manage {
+  padding: 5px;
+  font-weight: bold;
+}
+
+#delete-channel {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: rgb(245, 65, 65);
+  margin-bottom: 10px;
+}
+
 #add {
   background-image: url(../assets/addLinear.svg);
+}
+
+#delete-ch {
+  background-image: url(../assets/deleteLinear.svg);
+}
+
+#delete-channel:hover {
+  font-weight: bold;
+}
+
+#delete-channel:hover > #delete-ch,
+#delete-channel:focus > #delete-ch {
+  background-image: url(../assets/deleteBold.svg);
 }
