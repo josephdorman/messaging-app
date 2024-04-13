@@ -25,6 +25,12 @@
 .ch-chat-sidebar {
   background-color: var(--dark-grey);
   padding: 10px 20px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.ch-chat-sidebar .list {
+  margin-top: 20px;
 }
 
 .ch-chat-sb-title {
@@ -126,6 +132,29 @@ nav.send-msg-nav {
 
 .select-wrapper {
   margin-block: 15px;
+}
+
+#add-user-ch:hover,
+#remove-user-ch:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#add-user-ch,
+#remove-user-ch {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+#add-user-ch {
+  color: rgb(4, 167, 4);
+}
+
+#remove-user-ch {
+  color: rgb(245, 65, 65);
 }
 
 #manage {
