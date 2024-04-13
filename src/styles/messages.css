@@ -160,6 +160,7 @@ nav.send-msg-nav {
 #manage {
   padding: 5px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 #delete-channel {
