@@ -119,6 +119,13 @@ function Main({ setCurrentChannel, currentChannel }) {
                     </button>
                     <p className="chunky">Mange users</p>
                     <p className="ch-chat-sb-title">Add or kick users here</p>
+                    <div className="select-wrapper">
+                      <label htmlFor="manage-mode">Mode</label>
+                      <select id="manage-mode" name="manage-mode">
+                        <option value="add-user">Add</option>
+                        <option value="kick-user">Kick</option>
+                      </select>
+                    </div>
                     <form className="search friend-add ch-chat-sb">
                       <input
                         className="search-bar ch-chat-sb"

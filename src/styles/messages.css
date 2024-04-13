@@ -124,6 +124,10 @@ nav.send-msg-nav {
   background-color: var(--dark-grey);
 }
 
+.select-wrapper {
+  margin-block: 15px;
+}
+
 #manage {
   padding: 5px;
   font-weight: bold;
@@ -137,6 +141,19 @@ nav.send-msg-nav {
   background-color: transparent;
   color: rgb(245, 65, 65);
   margin-bottom: 10px;
+}
+
+#manage-mode {
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 4px;
+  outline: none;
+  margin-left: 5px;
+}
+
+#manage-mode option {
+  color: black;
 }
 
 #add {
