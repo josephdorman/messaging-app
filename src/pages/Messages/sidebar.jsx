@@ -32,6 +32,12 @@ function Sidebar({ currentChannel, setCurrentChannel }) {
     socket.on("receive_last_message", (data) => {
       setLastMessage(data);
     });
+    socket.on("refresh_channels", () => {
+      getChannels().then((res) => {
+        socket.emit("join_channels", res.channels);
+        setChannels(res);
+      });
+    });
   }, [socket]);
 
   useEffect(() => {

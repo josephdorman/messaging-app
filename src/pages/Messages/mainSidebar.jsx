@@ -1,12 +1,53 @@
+import Modal from "../../components/modal";
 import profile from "../../assets/profileIcon.svg";
+import { useNavigate } from "react-router-dom";
+import { deleteChannel } from "../../providers/api";
+import { useState, useContext } from "react";
+import SocketContext from "../../providers/socketContext";
 
-function MainSidebar() {
+function MainSidebar({ currentChannel }) {
+  const [toggleModal, setToggleModal] = useState(false);
+  const navigate = useNavigate();
+
+  const { socket } = useContext(SocketContext);
+
+  const onToggleModal = () => {
+    if (toggleModal) {
+      setToggleModal(false);
+    } else {
+      setToggleModal(true);
+    }
+  };
+
+  const onChannelDelete = () => {
+    setToggleModal(false);
+    deleteChannel(currentChannel);
+    socket.emit("delete_channel");
+    navigate("/messages");
+  };
   return (
     <>
+      {toggleModal ? (
+        <Modal
+          title="Are you sure you want to delete this channel?"
+          btns={
+            <>
+              <div>
+                <button onClick={onChannelDelete} id="modal-yes">
+                  Yes
+                </button>
+                <button onClick={onToggleModal} id="modal-no">
+                  No
+                </button>
+              </div>
+            </>
+          }
+        />
+      ) : null}
       <div className="ch-chat-sidebar">
         <button id="delete-channel" className="ch-chat-sb-btn">
           <div id="delete-ch" className="nav-btn" alt=""></div>
-          Delete Channel
+          <p onClick={onToggleModal}>Delete Channel</p>
         </button>
         <p className="chunky">Mange users</p>
         <p className="ch-chat-sb-title">Add or kick users here</p>

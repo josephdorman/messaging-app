@@ -173,6 +173,10 @@ nav.send-msg-nav {
   margin-bottom: 10px;
 }
 
+#delete-channel p {
+  color: rgb(245, 65, 65);
+}
+
 #manage-mode {
   color: black;
   border: none;

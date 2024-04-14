@@ -14,6 +14,7 @@ function Main({ setCurrentChannel, currentChannel }) {
   const [isError, setIsError] = useState(false);
   const [channel, setChannel] = useState(null);
   const [toggleSidebar, setToggleSidebar] = useState(false);
+
   const { socket } = useContext(SocketContext);
   const { user } = useContext(UserContext);
   const match = useMatch("/messages/:channelId");
@@ -29,7 +30,6 @@ function Main({ setCurrentChannel, currentChannel }) {
     }
 
     getMessages(match.params.channelId).then((res) => {
-      console.log(res);
       setChannel(res);
 
       if (res !== false) {
@@ -131,7 +131,9 @@ function Main({ setCurrentChannel, currentChannel }) {
                       </div>
                     )}
                   </div>
-                  {toggleSidebar && <MainSidebar />}
+                  {toggleSidebar && (
+                    <MainSidebar currentChannel={currentChannel} />
+                  )}
                 </div>
                 <div className="send-msg-wrapper">
                   <input

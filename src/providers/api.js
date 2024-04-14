@@ -319,6 +319,22 @@ async function cancelFriendRequest(id, type) {
     });
 }
 
+async function deleteChannel(channel) {
+  console.log(channel);
+  await api
+    .delete(`/channel/delete`, {
+      data: {
+        channel: channel,
+      },
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 export {
   createUser,
   createChannel,
@@ -340,4 +356,5 @@ export {
   sendFriendRequest,
   acceptFriendRequest,
   cancelFriendRequest,
+  deleteChannel,
 };

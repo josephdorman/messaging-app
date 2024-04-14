@@ -1,0 +1,44 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+}
+
+.modal div {
+  display: flex;
+  gap: 10px;
+}
+
+#modal-yes,
+#modal-no {
+  border: none;
+  outline: none;
+  padding: 5px 15px;
+  font-size: var(--fs-18);
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: var(--grey);
+  cursor: pointer;
+}
+
+#modal-yes:hover,
+#modal-no:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+#modal-yes {
+  color: rgb(4, 167, 4);
+}
+
+#modal-no,
+.modal p {
+  color: rgb(245, 65, 65);
+}
