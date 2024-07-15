@@ -60,6 +60,7 @@ function MainSidebar({ currentChannel }) {
       {toggleModal ? (
         <Modal
           title="Are you sure you want to delete this channel?"
+          perm={true}
           btns={
             <>
               <div>
