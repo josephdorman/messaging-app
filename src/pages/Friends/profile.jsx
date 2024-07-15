@@ -1,3 +1,4 @@
+import Modal from "../../components/modal";
 import profile from "../../assets/profileIcon.svg";
 import { useEffect, useState } from "react";
 import { useMatch, useOutletContext, useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ import {
 
 function Profile() {
   const navigate = useNavigate();
+  const [toggleModal, setToggleModal] = useState(false);
   const [friendProfile, setFriendProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -47,8 +49,43 @@ function Profile() {
     getDmChannel(id).then((res) => navigate(`/messages/${res._id}`));
   };
 
+  const onToggleModal = (id, action) => {
+    if (toggleModal) {
+      setToggleModal(false);
+    } else {
+      setToggleModal({ state: true, id: id, action: action });
+    }
+  };
+
+  const onAction = () => {
+    if (toggleModal.action === "remove") {
+      onRemoval(toggleModal.id);
+    } else {
+      onBlock(toggleModal.id);
+    }
+
+    onToggleModal(false);
+  };
+
   return (
     <>
+      {toggleModal ? (
+        <Modal
+          title={`Are you sure you want to ${toggleModal.action} this user?`}
+          btns={
+            <>
+              <div>
+                <button onClick={onAction} id="modal-yes">
+                  Yes
+                </button>
+                <button onClick={onToggleModal} id="modal-no">
+                  No
+                </button>
+              </div>
+            </>
+          }
+        />
+      ) : null}
       {isError ? (
         <p>User does not exist or is not a friend</p>
       ) : isLoading ? (
@@ -64,13 +101,13 @@ function Profile() {
               className="nav-btn"
             ></button>
             <button
-              onClick={() => onRemoval(friendProfile._id)}
+              onClick={(e) => onToggleModal(friendProfile._id, e.target.id)}
               id="remove"
               className="nav-btn"
             ></button>
             <button
-              onClick={() => onBlock(friendProfile._id)}
-              id="warn"
+              onClick={(e) => onToggleModal(friendProfile._id, e.target.id)}
+              id="block"
               className="nav-btn"
             ></button>
           </nav>
