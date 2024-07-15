@@ -24,12 +24,15 @@ function Profile() {
     });
   }, [match]);
 
-  const onRemoval = (e, id) => {
-    if (e.target.id === "remove") {
-      removeFriend(id);
-    } else {
-      blockUser(id);
-    }
+  const onRemoval = (id) => {
+    removeFriend(id);
+
+    setNewFriend(true);
+    navigate("/friends/online");
+  };
+
+  const onBlock = (id) => {
+    blockUser(id);
 
     setNewFriend(true);
     navigate("/friends/online");
@@ -48,13 +51,13 @@ function Profile() {
           <nav className="nav-profile">
             <button id="messages" className="nav-btn"></button>
             <button
-              onClick={(e) => onRemoval(e, friendProfile._id)}
+              onClick={() => onRemoval(friendProfile._id)}
               id="remove"
               className="nav-btn"
             ></button>
             <button
-              onClick={(e) => onRemoval(e, friendProfile._id)}
-              id="warn"
+              onClick={() => onBlock(friendProfile._id)}
+              id="block"
               className="nav-btn"
             ></button>
           </nav>
