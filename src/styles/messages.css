@@ -21,7 +21,7 @@
   gap: 15px;
 }
 
-.ch-chat:first-child div {
+.ch-chat div:first-child {
   margin-top: auto;
 }
 
