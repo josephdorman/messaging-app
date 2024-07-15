@@ -179,13 +179,13 @@
   background-image: url(../assets/userRemoveBold.svg);
 }
 
-#warn {
-  background-image: url(../assets/warnLinear.svg);
+#block {
+  background-image: url(../assets/blockLinear.svg);
 }
 
-#warn:hover,
-#warn:focus {
-  background-image: url(../assets/warnBold.svg);
+#block:hover,
+#block:focus {
+  background-image: url(../assets/blockBold.svg);
 }
 
 #accept {
