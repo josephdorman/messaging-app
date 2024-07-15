@@ -206,6 +206,22 @@ async function getChannels() {
   return channels;
 }
 
+async function getDmChannel(id) {
+  let channel = false;
+
+  await api
+    .get(`/channel/dm/${id}`)
+    .then(function (res) {
+      channel = res.data;
+    })
+    .catch(function (err) {
+      channel = false;
+      console.log(err);
+    });
+
+  return channel;
+}
+
 async function getSearchedChannels(value) {
   let channels = false;
 
@@ -370,6 +386,7 @@ export {
   getFriendRequests,
   getBlocked,
   getChannels,
+  getDmChannel,
   getSearchedChannels,
   getMessages,
   sendMessage,

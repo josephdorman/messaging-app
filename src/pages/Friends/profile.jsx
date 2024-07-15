@@ -1,7 +1,12 @@
 import profile from "../../assets/profileIcon.svg";
 import { useEffect, useState } from "react";
 import { useMatch, useOutletContext, useNavigate } from "react-router-dom";
-import { getFriendProfile, removeFriend, blockUser } from "../../providers/api";
+import {
+  getFriendProfile,
+  removeFriend,
+  blockUser,
+  getDmChannel,
+} from "../../providers/api";
 
 function Profile() {
   const navigate = useNavigate();
@@ -38,6 +43,10 @@ function Profile() {
     navigate("/friends/online");
   };
 
+  const onMessage = (id) => {
+    getDmChannel(id).then((res) => navigate(`/messages/${res._id}`));
+  };
+
   return (
     <>
       {isError ? (
@@ -49,7 +58,11 @@ function Profile() {
           <img className="icon-xl" src={profile} alt=""></img>
           <h3 className="friend-pfn">{friendProfile.username}</h3>
           <nav className="nav-profile">
-            <button id="messages" className="nav-btn"></button>
+            <button
+              onClick={() => onMessage(friendProfile._id)}
+              id="messages"
+              className="nav-btn"
+            ></button>
             <button
               onClick={() => onRemoval(friendProfile._id)}
               id="remove"
@@ -57,7 +70,7 @@ function Profile() {
             ></button>
             <button
               onClick={() => onBlock(friendProfile._id)}
-              id="block"
+              id="warn"
               className="nav-btn"
             ></button>
           </nav>
