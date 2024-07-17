@@ -104,28 +104,6 @@ async function getSearchedFriends(value) {
   return users;
 }
 
-async function getSearchedFriendsInChannel(value, channel, searchMode) {
-  let users = false;
-
-  await api
-    .post("/friend/search/channel", {
-      username: value,
-      channel: channel,
-      searchMode: searchMode,
-    })
-    .then(function (res) {
-      users = res.data;
-    })
-    .catch(function (error) {
-      users = false;
-      console.log(error);
-    });
-
-  console.log(value, channel);
-
-  return users;
-}
-
 async function getFriends() {
   let friends = false;
 
@@ -380,7 +358,6 @@ export {
   logoutUser,
   getSession,
   getSearchedFriends,
-  getSearchedFriendsInChannel,
   getFriends,
   getFriendProfile,
   getFriendRequests,
