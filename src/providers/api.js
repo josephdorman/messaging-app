@@ -218,6 +218,22 @@ async function getSearchedChannels(value) {
   return channels;
 }
 
+async function getChannelUsers(id) {
+  let users = false;
+
+  await api
+    .get(`/channel/${id}/users`)
+    .then(function (res) {
+      users = res.data.users;
+    })
+    .catch(function (err) {
+      users = false;
+      console.log(err);
+    });
+
+  return users;
+}
+
 async function getMessages(channelId) {
   let messages = false;
 
@@ -363,6 +379,7 @@ export {
   getFriendRequests,
   getBlocked,
   getChannels,
+  getChannelUsers,
   getDmChannel,
   getSearchedChannels,
   getMessages,
