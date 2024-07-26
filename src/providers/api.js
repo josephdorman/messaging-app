@@ -120,6 +120,21 @@ async function getFriends() {
   return friends;
 }
 
+async function getChannelFriends(id) {
+  let friends = false;
+
+  await api
+    .get(`/friends/invites/${id}`)
+    .then(function (res) {
+      friends = res.data.friends;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+
+  return friends;
+}
+
 async function getFriendProfile(id) {
   let friend = false;
 
@@ -375,6 +390,7 @@ export {
   getSession,
   getSearchedFriends,
   getFriends,
+  getChannelFriends,
   getFriendProfile,
   getFriendRequests,
   getBlocked,
