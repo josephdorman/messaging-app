@@ -156,28 +156,33 @@ nav.send-msg-nav {
   color: rgb(4, 167, 4);
 }
 
-#remove-user-ch {
+#remove-user-ch,
+#delete-channel,
+#delete-channel p {
   color: rgb(245, 65, 65);
 }
 
-#manage {
+#invite-user,
+#invite-user p {
+  color: white;
+}
+
+#manage,
+#view-users,
+#invite-users {
   padding: 5px;
   font-weight: bold;
   cursor: pointer;
 }
 
-#delete-channel {
+#delete-channel,
+#invite-user {
   display: flex;
   align-items: center;
   border: none;
   outline: none;
   background-color: transparent;
-  color: rgb(245, 65, 65);
   margin-bottom: 10px;
-}
-
-#delete-channel p {
-  color: rgb(245, 65, 65);
 }
 
 #manage-mode {
@@ -193,7 +198,8 @@ nav.send-msg-nav {
   color: black;
 }
 
-#add {
+#add,
+#invite-ch {
   background-image: url(../assets/addLinear.svg);
 }
 
@@ -201,11 +207,17 @@ nav.send-msg-nav {
   background-image: url(../assets/deleteLinear.svg);
 }
 
-#delete-channel:hover {
+#delete-channel:hover,
+#invite-user:hover {
   font-weight: bold;
 }
 
 #delete-channel:hover > #delete-ch,
 #delete-channel:focus > #delete-ch {
   background-image: url(../assets/deleteBold.svg);
+}
+
+#invite-user:hover > #invite-ch,
+#invite-user:focus > #invite-ch {
+  background-image: url(../assets/addBold.svg);
 }
