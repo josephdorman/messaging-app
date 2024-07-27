@@ -104,6 +104,24 @@ async function getSearchedFriends(value) {
   return users;
 }
 
+async function getChannelSearchedFriends(value, id) {
+  let users = false;
+
+  await api
+    .post(`/friends/invites/searched`, {
+      username: value,
+      id: id,
+    })
+    .then(function (res) {
+      users = res.data.friends;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+
+  return users;
+}
+
 async function getFriends() {
   let friends = false;
 
@@ -398,6 +416,7 @@ export {
   getChannelUsers,
   getDmChannel,
   getSearchedChannels,
+  getChannelSearchedFriends,
   getMessages,
   sendMessage,
   blockUser,
