@@ -357,6 +357,20 @@ async function sendFriendRequest(e, id) {
   return errors;
 }
 
+async function sendInviteRequest(userId, channelId) {
+  await api
+    .post("/channel/invite", {
+      userId: userId,
+      channelId: channelId,
+    })
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
 async function acceptFriendRequest(id) {
   await api
     .post(`/friend/accept`, {
@@ -423,6 +437,7 @@ export {
   unblockUser,
   removeFriend,
   sendFriendRequest,
+  sendInviteRequest,
   acceptFriendRequest,
   cancelFriendRequest,
   deleteChannel,

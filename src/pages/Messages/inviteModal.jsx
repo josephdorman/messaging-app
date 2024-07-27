@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {
   getChannelFriends,
   getChannelSearchedFriends,
+  sendInviteRequest,
 } from "../../providers/api";
 import useDebounce from "../../hooks/useDebounce";
 import "../../styles/modal.css";
@@ -83,7 +84,12 @@ function InviteModal({ onToggleModal, currentChannel }) {
                   alt=""
                 ></img>
                 <h3 className="ch-name ch-name-fr">{user.username}</h3>
-                <button id="add-user-ch">Invite</button>
+                <button
+                  onClick={() => sendInviteRequest(user._id, currentChannel)}
+                  id="add-user-ch"
+                >
+                  Invite
+                </button>
               </div>
             ))
           ) : (
