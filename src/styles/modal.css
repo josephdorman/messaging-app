@@ -12,9 +12,19 @@
   gap: 10px;
 }
 
-.modal div {
+.modal .modal-btns div {
   display: flex;
   gap: 10px;
+}
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 500px;
+  background-color: var(--black);
+  padding: 20px 25px;
+  border-radius: 10px;
 }
 
 #modal-yes,
@@ -39,6 +49,6 @@
 }
 
 #modal-no,
-.modal p {
+.modal-warning {
   color: rgb(245, 65, 65);
 }
