@@ -267,6 +267,25 @@ async function getChannelUsers(id) {
   return users;
 }
 
+async function getChannelSearchedUsers(value, id) {
+  let users = false;
+
+  await api
+    .post(`/channel/searched/users`, {
+      search: value,
+      id: id,
+    })
+    .then(function (res) {
+      users = res.data.users;
+    })
+    .catch(function (err) {
+      users = false;
+      console.log(err);
+    });
+
+  return users;
+}
+
 async function getMessages(channelId) {
   let messages = false;
 
@@ -431,6 +450,7 @@ export {
   getDmChannel,
   getSearchedChannels,
   getChannelSearchedFriends,
+  getChannelSearchedUsers,
   getMessages,
   sendMessage,
   blockUser,
