@@ -78,7 +78,10 @@ function ViewUsers({ currentChannel }) {
             <div key={user._id} className="def-btn ch-wrapper">
               <img className="icon-md ch-icon" src={profile} alt="" />
               <h3 className="ch-name ch-name-fr">{user.username}</h3>
-              <button id="add-user-ch">Add</button>
+              <div className="user-btn-wrapper">
+                <button id="add-user-ch">Add</button>
+                <button id="remove-user-ch">Block</button>
+              </div>
             </div>
           ))
         ) : users ? (
@@ -89,7 +92,10 @@ function ViewUsers({ currentChannel }) {
               <div key={user._id} className="def-btn ch-wrapper">
                 <img className="icon-md ch-icon" src={profile} alt="" />
                 <h3 className="ch-name ch-name-fr">{user.username}</h3>
-                <button id="add-user-ch">Add</button>
+                <div className="user-btn-wrapper">
+                  <button id="add-user-ch">Add</button>
+                  <button id="remove-user-ch">Block</button>
+                </div>
               </div>
             ))
           )

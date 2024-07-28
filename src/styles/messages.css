@@ -143,10 +143,15 @@ nav.send-msg-nav {
   cursor: pointer;
 }
 
-#add-user-ch,
-#remove-user-ch {
+.user-btn-wrapper {
+  display: flex;
+  gap: 10px;
   grid-column: 3 / 4;
   grid-row: 1 / 3;
+}
+
+#add-user-ch,
+#remove-user-ch {
   border: none;
   outline: none;
   background-color: transparent;
@@ -154,6 +159,10 @@ nav.send-msg-nav {
 
 #add-user-ch {
   color: rgb(4, 167, 4);
+}
+
+#remove-user-ch {
+  color: rgb(245, 65, 65);
 }
 
 #remove-user-ch,
