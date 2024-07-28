@@ -207,6 +207,21 @@ nav.send-msg-nav {
   background-image: url(../assets/deleteLinear.svg);
 }
 
+.modal-title {
+  display: flex;
+}
+
+#exit-modal {
+  cursor: pointer;
+  rotate: 45deg;
+  transition: transform 0.3s ease-in-out;
+  margin-left: auto;
+}
+
+#exit-modal:hover {
+  transform: rotate(180deg);
+}
+
 #delete-channel:hover,
 #invite-user:hover {
   font-weight: bold;
