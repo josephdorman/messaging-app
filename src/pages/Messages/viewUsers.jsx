@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { getChannelUsers, getChannelSearchedUsers } from "../../providers/api";
+import {
+  getChannelUsers,
+  getChannelSearchedUsers,
+  sendFriendRequestNoSearch,
+  blockUser,
+} from "../../providers/api";
 import InviteModal from "./inviteModal";
 import useDebounce from "../../hooks/useDebounce";
 import profile from "../../assets/profileIcon.svg";
@@ -79,7 +84,12 @@ function ViewUsers({ currentChannel }) {
               <img className="icon-md ch-icon" src={profile} alt="" />
               <h3 className="ch-name ch-name-fr">{user.username}</h3>
               <div className="user-btn-wrapper">
-                <button id="add-user-ch">Add</button>
+                <button
+                  onClick={() => sendFriendRequestNoSearch(user._id)}
+                  id="add-user-ch"
+                >
+                  Add
+                </button>
                 <button id="remove-user-ch">Block</button>
               </div>
             </div>
@@ -93,7 +103,12 @@ function ViewUsers({ currentChannel }) {
                 <img className="icon-md ch-icon" src={profile} alt="" />
                 <h3 className="ch-name ch-name-fr">{user.username}</h3>
                 <div className="user-btn-wrapper">
-                  <button id="add-user-ch">Add</button>
+                  <button
+                    onClick={() => sendFriendRequest(e, user._id)}
+                    id="add-user-ch"
+                  >
+                    Add
+                  </button>
                   <button id="remove-user-ch">Block</button>
                 </div>
               </div>
