@@ -6,6 +6,7 @@ import {
   kickUser,
 } from "../../providers/api";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../components/modal";
 import useDebounce from "../../hooks/useDebounce";
 import SocketContext from "../../providers/socketContext";
 import profile from "../../assets/profileIcon.svg";
