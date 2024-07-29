@@ -329,6 +329,20 @@ async function blockUser(id) {
     });
 }
 
+async function kickUser(id, channelId) {
+  await api
+    .post(`/channel/kick`, {
+      userId: id,
+      channelId: channelId,
+    })
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
 async function unblockUser(id) {
   await api
     .post("/user/unblock", {
@@ -467,6 +481,7 @@ export {
   getMessages,
   sendMessage,
   blockUser,
+  kickUser,
   unblockUser,
   removeFriend,
   sendFriendRequest,
