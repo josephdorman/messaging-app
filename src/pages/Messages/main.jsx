@@ -13,7 +13,8 @@ function Main({ setCurrentChannel, currentChannel }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [channel, setChannel] = useState(null);
-  const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [toggleManage, setToggleManage] = useState(false);
+  const [toggleUsers, setToggleUsers] = useState(false);
 
   const { socket } = useContext(SocketContext);
   const { user } = useContext(UserContext);
@@ -22,6 +23,7 @@ function Main({ setCurrentChannel, currentChannel }) {
   const inputRef = useRef(null);
   const chatRef = useRef();
   const channelManage = useRef();
+  const viewUsers = useRef();
 
   useEffect(() => {
     if (!match) {
@@ -33,7 +35,7 @@ function Main({ setCurrentChannel, currentChannel }) {
       setChannel(res);
 
       if (res !== false) {
-        setToggleSidebar(false);
+        setToggleManage(false);
         setCurrentChannel(match.params.channelId);
         setIsLoading(false);
         setIsError(false);
@@ -71,13 +73,27 @@ function Main({ setCurrentChannel, currentChannel }) {
     }
   };
 
-  const onClick = () => {
-    if (toggleSidebar) {
+  const onClickManage = () => {
+    if (toggleManage) {
       channelManage.current.className = "fr-nav";
-      setToggleSidebar(false);
+      setToggleManage(false);
     } else {
       channelManage.current.className = "fr-nav fr-nav-focus";
-      setToggleSidebar(true);
+      viewUsers.current.className = "fr-nav";
+      setToggleManage(true);
+      setToggleUsers(false);
+    }
+  };
+
+  const onClickView = () => {
+    if (toggleUsers) {
+      viewUsers.current.className = "fr-nav";
+      setToggleUsers(false);
+    } else {
+      viewUsers.current.className = "fr-nav fr-nav-focus";
+      channelManage.current.className = "fr-nav";
+      setToggleManage(false);
+      setToggleUsers(true);
     }
   };
 
@@ -96,21 +112,40 @@ function Main({ setCurrentChannel, currentChannel }) {
                   <img className="icon-lg" src={profile} alt=""></img>
                   <div className="">
                     <h3>{getChannelName(channel)}</h3>
-                    <p>
-                      This is the global chat room, talk to anybody and
-                      everybody
-                    </p>
+                    {getChannelName(channel) === "Global" ? (
+                      <p>
+                        This is the global chat room, talk to anybody and
+                        everybody.
+                      </p>
+                    ) : "main" in channel.channelName ? (
+                      <p>
+                        This is the a user managed and created channel chat
+                        room.
+                      </p>
+                    ) : (
+                      <p>This is a private direct message channel.</p>
+                    )}
                   </div>
-                  {channel.owner && (
+                  <div>
                     <button
-                      ref={channelManage}
-                      onClick={onClick}
+                      ref={viewUsers}
+                      onClick={onClickView}
                       className="fr-nav"
-                      id="manage"
+                      id="view-users"
                     >
-                      Manage Channel
+                      View Users
                     </button>
-                  )}
+                    {channel.owner && (
+                      <button
+                        ref={channelManage}
+                        onClick={onClickManage}
+                        className="fr-nav"
+                        id="manage"
+                      >
+                        Manage Channel
+                      </button>
+                    )}
+                  </div>
                 </div>
                 <div className="channel-view">
                   <div className="ch-chat" ref={chatRef} onLoad={resetScroll}>
@@ -131,8 +166,12 @@ function Main({ setCurrentChannel, currentChannel }) {
                       </div>
                     )}
                   </div>
-                  {toggleSidebar && (
-                    <MainSidebar currentChannel={currentChannel} />
+                  {(toggleManage || toggleUsers) && (
+                    <MainSidebar
+                      currentChannel={currentChannel}
+                      toggleManage={toggleManage}
+                      toggleUsers={toggleUsers}
+                    />
                   )}
                 </div>
                 <div className="send-msg-wrapper">
