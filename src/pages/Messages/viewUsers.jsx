@@ -90,7 +90,9 @@ function ViewUsers({ currentChannel }) {
                 >
                   Add
                 </button>
-                <button id="remove-user-ch">Block</button>
+                <button onClick={() => blockUser(user._id)} id="remove-user-ch">
+                  Block
+                </button>
               </div>
             </div>
           ))
@@ -109,7 +111,12 @@ function ViewUsers({ currentChannel }) {
                   >
                     Add
                   </button>
-                  <button id="remove-user-ch">Block</button>
+                  <button
+                    onClick={() => blockUser(user._id)}
+                    id="remove-user-ch"
+                  >
+                    Block
+                  </button>
                 </div>
               </div>
             ))
