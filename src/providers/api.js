@@ -86,6 +86,67 @@ async function getSession() {
   return user;
 }
 
+async function getNotifications() {
+  let notifications = false;
+
+  await api
+    .get(`/notifications`)
+    .then(function (res) {
+      notifications = res.data.notifications;
+    })
+    .catch(function (err) {
+      notifications = false;
+      console.log(err);
+    });
+
+  return notifications;
+}
+
+async function getNotificationsInvites() {
+  let notifications = false;
+
+  await api
+    .get(`/notifications/invites`)
+    .then(function (res) {
+      notifications = res.data.notifications;
+    })
+    .catch(function (err) {
+      notifications = false;
+      console.log(err);
+    });
+
+  return notifications;
+}
+
+async function getNotificationsAnnouncements() {
+  let notifications = false;
+
+  await api
+    .get(`/notifications/announcements`)
+    .then(function (res) {
+      notifications = res.data.notifications;
+    })
+    .catch(function (err) {
+      notifications = false;
+      console.log(err);
+    });
+
+  return notifications;
+}
+
+async function removeNotification(id) {
+  await api
+    .post("/notification/remove", {
+      notifId: id,
+    })
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
 async function getSearchedFriends(value) {
   let users = false;
 
@@ -466,6 +527,10 @@ export {
   loginUser,
   logoutUser,
   getSession,
+  getNotifications,
+  getNotificationsInvites,
+  getNotificationsAnnouncements,
+  removeNotification,
   getSearchedFriends,
   getFriends,
   getChannelFriends,

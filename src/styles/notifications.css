@@ -1,0 +1,9 @@
+.notif-desc span {
+  font-weight: bold;
+  text-transform: italic;
+}
+
+.notif-type {
+  font-weight: bold;
+  text-transform: uppercase;
+}
