@@ -86,6 +86,22 @@ async function getSession() {
   return user;
 }
 
+async function getUserCensored() {
+  let user = false;
+
+  await api
+    .get("/user/censored")
+    .then(function (response) {
+      user = response.data;
+    })
+    .catch(function (err) {
+      user = false;
+      console.log(err);
+    });
+
+  return user;
+}
+
 async function getNotifications() {
   let notifications = false;
 
@@ -527,6 +543,7 @@ export {
   loginUser,
   logoutUser,
   getSession,
+  getUserCensored,
   getNotifications,
   getNotificationsInvites,
   getNotificationsAnnouncements,

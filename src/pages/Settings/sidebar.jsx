@@ -17,15 +17,6 @@ function Sidebar() {
               <div className="setting-category">
                 <h2 className="chunky">User Settings</h2>
                 <button className="setting ">My Account</button>
-                <button className="setting">Profiles</button>
-                <button className="setting">Security</button>
-              </div>
-              <div className="setting-category">
-                <h2 className="chunky">App Settings</h2>
-                <button className="setting">Theme</button>
-                <button className="setting">Language</button>
-                <button className="setting">Display</button>
-                <button className="setting">Help</button>
               </div>
             </div>
           </>
