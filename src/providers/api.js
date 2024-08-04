@@ -537,6 +537,74 @@ async function deleteChannel(channel) {
     });
 }
 
+async function updateEmail(email) {
+  let errors = false;
+
+  await api
+    .put("/user/update/email", {
+      email: email,
+    })
+    .then(function (res) {
+      errors = false;
+    })
+    .catch(function (err) {
+      errors = err.response.data.errors;
+    });
+
+  return errors;
+}
+
+async function updateUsername(username) {
+  let errors = false;
+
+  await api
+    .put("/user/update/username", {
+      username: username,
+    })
+    .then(function (res) {
+      errors = false;
+    })
+    .catch(function (err) {
+      errors = err.response.data.errors;
+    });
+
+  return errors;
+}
+
+async function updatePassword(password) {
+  let errors = false;
+
+  await api
+    .put("/user/update/password", {
+      password: password,
+    })
+    .then(function (res) {
+      errors = false;
+    })
+    .catch(function (err) {
+      errors = err.response.data.errors;
+    });
+
+  return errors;
+}
+
+async function updateAbout(about) {
+  let errors = false;
+
+  await api
+    .put("/user/update/about", {
+      about: about,
+    })
+    .then(function (res) {
+      errors = false;
+    })
+    .catch(function (err) {
+      errors = err.response.data.errors;
+    });
+
+  return errors;
+}
+
 export {
   createUser,
   createChannel,
@@ -572,4 +640,8 @@ export {
   acceptFriendRequest,
   cancelFriendRequest,
   deleteChannel,
+  updateEmail,
+  updateUsername,
+  updatePassword,
+  updateAbout,
 };
