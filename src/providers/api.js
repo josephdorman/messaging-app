@@ -393,6 +393,25 @@ async function sendMessage(message, channelId) {
     });
 }
 
+async function sendFeedback(message) {
+  let state = false;
+
+  await api
+    .post(`/feedback`, {
+      message: message,
+    })
+    .then(function (res) {
+      res.data.state = true;
+      state = res.data;
+    })
+    .catch(function (err) {
+      err.response.data.errors[0].state = false;
+      state = err.response.data.errors[0];
+    });
+
+  return state;
+}
+
 async function blockUser(id) {
   await api
     .post("/user/block", {
@@ -630,6 +649,7 @@ export {
   getChannelSearchedUsers,
   getMessages,
   sendMessage,
+  sendFeedback,
   blockUser,
   kickUser,
   unblockUser,
