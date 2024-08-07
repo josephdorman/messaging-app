@@ -1,0 +1,77 @@
+.home {
+  padding: 40px;
+  gap: 50px;
+  display: flex;
+  list-style-position: inside;
+}
+
+.upcoming {
+  min-width: 400px;
+  padding-left: 50px;
+  border-left: 2px solid var(--light-grey);
+}
+
+.upcoming ul {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.update {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.update .update-desc a {
+  text-decoration: none;
+}
+
+.update-list {
+  display: grid;
+  gap: 10px;
+}
+
+.feedback {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  margin-top: auto;
+}
+
+.feedback-submit {
+  display: flex;
+}
+
+.feedback-submit button {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  padding-inline: 5px;
+  font-size: 15px;
+  position: relative;
+  top: 220px;
+  right: 10px;
+}
+
+.feedback-submit button:hover {
+  font-weight: bold;
+}
+
+.feedback-res {
+  justify-self: bottom;
+  position: absolute;
+  top: 244px;
+  left: 10px;
+}
+
+#feedback-form {
+  background-color: rgb(45, 45, 45);
+  border: none;
+  border-radius: 10px;
+  resize: none;
+  padding: 10px;
+  outline: none;
+}

@@ -16,7 +16,8 @@ import FriendsProfile from "./pages/Friends/profile";
 import Add from "./pages/Friends/add";
 import Pending from "./pages/Friends/pending";
 import Blocked from "./pages/Friends/blocked";
-import Channel from "./pages/Messages/main";
+import Notifications from "./pages/Notifications/index";
+import Home from "./pages/Home/index";
 
 function Router() {
   const [user, setUser] = useState(null);
@@ -30,8 +31,18 @@ function Router() {
           element: <Navigate to="/friends/online" replace={true} />,
         },
         {
+          path: "home",
+          element: <Home />,
+          errorElement: <ErrorPage />,
+        },
+        {
           path: "settings",
           element: <Settings />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "notifications",
+          element: <Notifications />,
           errorElement: <ErrorPage />,
         },
         {
