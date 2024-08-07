@@ -1,8 +1,9 @@
+import "../styles/errorPage.css";
 import { Link } from "react-router-dom";
 
 function ErrorPage() {
   return (
-    <div>
+    <div className="error-page">
       <h1>
         Uh oh, route was not found click <Link to="/">here</Link> to redirect to
         home page

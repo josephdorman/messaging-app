@@ -1,0 +1,13 @@
+.error-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--grey);
+  justify-content: center;
+}
+
+.error-page h1 {
+  text-align: center;
+  margin-top: 100px;
+  width: 600px;
+}
