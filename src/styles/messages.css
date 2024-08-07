@@ -161,10 +161,6 @@ nav.send-msg-nav {
   color: rgb(4, 167, 4);
 }
 
-#remove-user-ch {
-  color: rgb(245, 65, 65);
-}
-
 #remove-user-ch,
 #delete-channel,
 #delete-channel p {
