@@ -28,7 +28,7 @@ function Router() {
       children: [
         {
           path: "/",
-          element: <Navigate to="/friends/online" replace={true} />,
+          element: <Navigate to="/home" replace={true} />,
         },
         {
           path: "home",
@@ -100,7 +100,7 @@ function Router() {
     },
     {
       path: "/signup",
-      element: <Signup />,
+      element: <Signup user={user} setUser={setUser} />,
       errorElement: <ErrorPage />,
     },
     {
