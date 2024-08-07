@@ -3,7 +3,7 @@ import MainSidebar from "./mainSidebar";
 import MainComp from "../../components/main";
 import { getMessages, sendMessage } from "../../providers/api";
 import { useState, useEffect, useContext, useRef } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import SocketContext from "../../providers/socketContext";
 import UserContext from "../../providers/userContext";
 import useDateFormat from "../../hooks/useDateFormat";
@@ -19,6 +19,7 @@ function Main({ setCurrentChannel, currentChannel }) {
   const { socket } = useContext(SocketContext);
   const { user } = useContext(UserContext);
   const match = useMatch("/messages/:channelId");
+  const navigate = useNavigate();
 
   const inputRef = useRef(null);
   const chatRef = useRef();
@@ -27,6 +28,7 @@ function Main({ setCurrentChannel, currentChannel }) {
 
   useEffect(() => {
     if (!match) {
+      navigate("/messages/65c6e4d2e66df1ba996deeda");
       setIsError(true);
       return;
     }
@@ -40,6 +42,7 @@ function Main({ setCurrentChannel, currentChannel }) {
         setIsLoading(false);
         setIsError(false);
       } else {
+        navigate("/messages/65c6e4d2e66df1ba996deeda");
         setIsError(true);
       }
     });
