@@ -55,9 +55,11 @@ function Navbar() {
           <button id="home" className="nav-btn">
             <Link to="/home"></Link>
           </button>
+          {/*
           <button id="notifs" className="nav-btn">
             <Link to="/notifications"></Link>
           </button>
+          */}
           <button id="friends" className="nav-btn">
             <Link to="/friends"></Link>
           </button>

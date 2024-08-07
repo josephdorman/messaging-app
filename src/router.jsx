@@ -40,11 +40,13 @@ function Router() {
           element: <Settings />,
           errorElement: <ErrorPage />,
         },
+        /*
         {
           path: "notifications",
           element: <Notifications />,
           errorElement: <ErrorPage />,
         },
+        */
         {
           path: "messages",
           element: <Messages />,
