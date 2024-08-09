@@ -79,7 +79,6 @@ async function getSession() {
       }
     })
     .catch(function (error) {
-      user = false;
       console.log(error);
     });
 
@@ -95,7 +94,6 @@ async function getUserCensored() {
       user = response.data;
     })
     .catch(function (err) {
-      user = false;
       console.log(err);
     });
 
@@ -111,7 +109,6 @@ async function getNotifications() {
       notifications = res.data.notifications;
     })
     .catch(function (err) {
-      notifications = false;
       console.log(err);
     });
 
@@ -127,7 +124,6 @@ async function getNotificationsInvites() {
       notifications = res.data.notifications;
     })
     .catch(function (err) {
-      notifications = false;
       console.log(err);
     });
 
@@ -143,7 +139,6 @@ async function getNotificationsAnnouncements() {
       notifications = res.data.notifications;
     })
     .catch(function (err) {
-      notifications = false;
       console.log(err);
     });
 
@@ -174,7 +169,6 @@ async function getSearchedFriends(value) {
       users = res.data.friends;
     })
     .catch(function (error) {
-      users = false;
       console.log(error);
     });
 
@@ -208,7 +202,6 @@ async function getFriends() {
       friends = res.data.friends;
     })
     .catch(function (err) {
-      friends = false;
       console.log(err);
     });
 
@@ -254,7 +247,6 @@ async function getFriendProfile(id) {
       friend = res.data;
     })
     .catch(function (err) {
-      friend = false;
       console.log(err);
     });
 
@@ -270,7 +262,6 @@ async function getFriendRequests() {
       requests = res.data.friendRequests;
     })
     .catch(function (err) {
-      requests = false;
       console.log(err);
     });
 
@@ -286,7 +277,6 @@ async function getBlocked() {
       blocked = res.data.blocked;
     })
     .catch(function (err) {
-      blocked = false;
       console.log(err);
     });
 
@@ -302,7 +292,6 @@ async function getChannels() {
       channels = res.data;
     })
     .catch(function (err) {
-      channels = false;
       console.log(err);
     });
 
@@ -318,7 +307,6 @@ async function getDmChannel(id) {
       channel = res.data;
     })
     .catch(function (err) {
-      channel = false;
       console.log(err);
     });
 
@@ -336,7 +324,6 @@ async function getSearchedChannels(value) {
       channels = res.data.channels;
     })
     .catch(function (error) {
-      channels = false;
       console.log(error);
     });
 
@@ -352,7 +339,6 @@ async function getChannelUsers(id) {
       users = res.data.users;
     })
     .catch(function (err) {
-      users = false;
       console.log(err);
     });
 
@@ -371,7 +357,6 @@ async function getChannelSearchedUsers(value, id) {
       users = res.data.users;
     })
     .catch(function (err) {
-      users = false;
       console.log(err);
     });
 
@@ -387,7 +372,6 @@ async function getMessages(channelId) {
       messages = res.data;
     })
     .catch(function (err) {
-      messages = false;
       console.log(err);
     });
 
