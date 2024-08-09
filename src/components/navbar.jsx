@@ -3,7 +3,8 @@ import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { logoutUser } from "../providers/api";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import SocketContext from "../providers/socketContext";
 
 /// REGARDING LOGOUT BUTTON ///
 // create a modal for logout confirmation
@@ -11,9 +12,11 @@ import { useState } from "react";
 
 function Navbar() {
   const [toggleModal, setToggleModal] = useState(false);
+  const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
 
   const logout = () => {
+    socket.emit("user_offline");
     logoutUser();
     navigate("/login");
   };

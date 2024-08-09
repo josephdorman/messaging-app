@@ -1,4 +1,5 @@
 import profile from "../../assets/profileIcon.svg";
+import { getOnlineFriends } from "../../providers/api";
 import { useState, useEffect, useContext } from "react";
 import UserContext from "../../providers/userContext";
 import SocketContext from "../../providers/socketContext";
@@ -9,13 +10,24 @@ function Online() {
   const [friends, setFriends] = useState(null);
 
   useEffect(() => {
-    socket.emit("get_friends");
-    socket.on("receive_friends", (data) => {
-      console.log(data);
-      const newArr = data.filter((friend) => friend._id !== user._id);
-      setFriends(newArr);
+    socket.on("friend_online", () => {
+      socket.emit("refresh_friends", user._id);
+    });
+
+    socket.on("friend_offline", () => {
+      socket.emit("refresh_friends", user._id);
+    });
+
+    socket.on("get_friends", (friends) => {
+      setFriends(friends);
     });
   }, [socket]);
+
+  useEffect(() => {
+    getOnlineFriends().then((res) => {
+      setFriends(res);
+    });
+  }, []);
 
   return (
     <>

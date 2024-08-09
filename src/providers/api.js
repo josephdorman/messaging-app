@@ -215,6 +215,21 @@ async function getFriends() {
   return friends;
 }
 
+async function getOnlineFriends() {
+  let friends = false;
+
+  await api
+    .get("/friends/online")
+    .then(function (res) {
+      friends = res.data.friends;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+
+  return friends;
+}
+
 async function getChannelFriends(id) {
   let friends = false;
 
@@ -637,6 +652,7 @@ export {
   removeNotification,
   getSearchedFriends,
   getFriends,
+  getOnlineFriends,
   getChannelFriends,
   getFriendProfile,
   getFriendRequests,
