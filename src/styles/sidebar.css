@@ -1,6 +1,7 @@
 .sidebar {
   --col-grid: 20px;
   display: grid;
+  position: sticky;
 
   background-color: var(--dark-grey);
 }

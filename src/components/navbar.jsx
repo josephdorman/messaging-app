@@ -15,7 +15,7 @@ import SocketContext from "../providers/socketContext";
 
 function Navbar() {
   const [toggleModal, setToggleModal] = useState(false);
-  const [focused, setFocused] = useState("");
+  const [focused, setFocused] = useState("home");
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
 
