@@ -114,7 +114,10 @@ function Main() {
             <li>Use of emojis and attach files to chats/group messages.</li>
             <li>Change profile picture and channel picture.</li>
             <li>Change channel description.</li>
-            <li>Display a user's status (Online, Offline, Away, etc...)</li>
+            <li>
+              Display a user's status (Online, Offline, Away, etc...) under
+              users name in channel and when viewing profile.
+            </li>
           </ul>
         </div>
       </div>
