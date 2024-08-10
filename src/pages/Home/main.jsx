@@ -48,7 +48,7 @@ function Main() {
             </li>
             <li>
               Added ability to set an "About Me" to your profile which can be
-              set in "Settings", and can be viewed under users profile page.
+              set in "Settings", and can be viewed under profile page.
             </li>
             <li>Better formatting when viewing users profile.</li>
           </ul>
