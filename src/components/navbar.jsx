@@ -1,4 +1,7 @@
 import Modal from "./modal";
+import homeIcon from "../assets/homeBold.svg";
+import friendIcon from "../assets/friendsBold.svg";
+import messageIcon from "../assets/chatBold.svg";
 import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
@@ -12,6 +15,7 @@ import SocketContext from "../providers/socketContext";
 
 function Navbar() {
   const [toggleModal, setToggleModal] = useState(false);
+  const [focused, setFocused] = useState("");
   const { socket } = useContext(SocketContext);
   const navigate = useNavigate();
 
@@ -55,7 +59,14 @@ function Navbar() {
         </div>
         <nav>
           <div className="line"></div>
-          <button id="home" className="nav-btn">
+          <button
+            id="home"
+            className="nav-btn"
+            onClick={() => setFocused("home")}
+            style={{
+              backgroundImage: focused === "home" && `url(${homeIcon})`,
+            }}
+          >
             <Link to="/home"></Link>
           </button>
           {/*
@@ -63,10 +74,24 @@ function Navbar() {
             <Link to="/notifications"></Link>
           </button>
           */}
-          <button id="friends" className="nav-btn">
+          <button
+            id="friends"
+            className="nav-btn"
+            onClick={() => setFocused("friends")}
+            style={{
+              backgroundImage: focused === "friends" && `url(${friendIcon})`,
+            }}
+          >
             <Link to="/friends"></Link>
           </button>
-          <button id="messages" className="nav-btn">
+          <button
+            id="messages"
+            className="nav-btn"
+            onClick={() => setFocused("messages")}
+            style={{
+              backgroundImage: focused === "messages" && `url(${messageIcon})`,
+            }}
+          >
             <Link to="/messages"></Link>
           </button>
         </nav>
