@@ -32,7 +32,7 @@ html {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 100vh;
-  background: var(--black);
+  background: whitesmoke;
 }
 
 .ch-chat,
@@ -41,7 +41,7 @@ html {
 }
 
 .ch-chat::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 .ch-chat::-webkit-scrollbar-track {
@@ -51,7 +51,7 @@ html {
 
 .ch-chat::-webkit-scrollbar-thumb {
   border-radius: 100vh;
-  background: var(--black);
+  background: whitesmoke;
 }
 
 a {
